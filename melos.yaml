@@ -1,0 +1,8 @@
+name: g18-app
+
+packages:
+  - ./**
+
+command:
+  bootstrap:
+    runPubGetInParallel: false
