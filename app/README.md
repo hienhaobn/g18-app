@@ -1,5 +1,11 @@
 # G18 mobile
 
+# Môi trường
+- Flutter - 3.27.1
+- Melos - 6.2.1
+- Java - 11
+
+# Cấu trúc thư mục
 app/
 ├── android/  Mã nguồn Android native
 ├── ios/  Mã nguồn iOS native
