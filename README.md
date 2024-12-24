@@ -4,7 +4,6 @@ Flutter project using clean architecture and bloc pattern.
 
 ![Architecture](images/project_architecture.png?raw=true)
 
-
 ## Getting Started
 
 ### Requirements
@@ -19,21 +18,23 @@ Flutter project using clean architecture and bloc pattern.
 - WARN: If you already installed `melos` and `lefthook`, you could omit this step.
 
 - Install melos:
-    - Run `dart pub global activate melos 6.2.0`
+  - Run `dart pub global activate melos 6.2.0`
 
 - Install lefthook (optional):
-    - Run `gem install lefthook`
+  - Run `gem install lefthook`
 
 - Export paths:
-    - Add to `.zshrc` or `.bashrc` file
-```    
+  - Add to `.zshrc` or `.bashrc` file
+
+```bash
 export PATH="$PATH:<path to flutter>/flutter/bin"
 export PATH="$PATH:<path to flutter>/flutter/bin/cache/dart-sdk/bin"
 export PATH="$PATH:~/.pub-cache/bin"
 export PATH="$PATH:~/.gem/gems/lefthook-1.10.0/bin"
 ```
-    - Save file `.zshrc`
-    - Run `source ~/.zshrc`
+
+- Save file `.zshrc`
+- Run `source ~/.zshrc`
 
 ### Config and run app
 

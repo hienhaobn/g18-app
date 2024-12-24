@@ -4,15 +4,15 @@ analyzer:
   exclude:
     - "**/*.g.dart"
     # - "**/*.graphql.dart"
-    # - "**/*.gr.dart"
+    - "**/*.gr.dart"
     - "**/*.freezed.dart"
     - "**/*.config.dart"
     - "**/*.gen.dart"
     - "**/*.mapper.dart"
     # - "**/test/**/*.dart"
     # - "**/test/*.dart"
-    - "resources/lib/src/generated/intl/*.dart"
-    - "resources/lib/src/generated/*.dart"
+    # - "resources/lib/src/generated/intl/*.dart"
+    # - "resources/lib/src/generated/*.dart"
   language:
     strict-casts: false
     strict-raw-types: true
