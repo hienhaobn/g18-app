@@ -1,125 +1,141 @@
+import 'package:app/base_hieu/colors.dart';
+import 'package:app/base_hieu/routes.dart';
+import 'package:app/ui/account_page/account_page.dart';
+import 'package:app/ui/home/home_page.dart';
+import 'package:app/ui/lease_page/lease_page.dart';
+import 'package:app/ui/post_new_page/post_new_page.dart';
+import 'package:app/ui/sell_page/sell_page.dart';
+import 'package:app/ui/send_required_page/send_required_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'dart:math' as math;
+
+double? ratioHeight;
+double? ratioWidth;
+late double scaleFontsize;
+Locale? localeL;
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key, this.locale});
 
+    final Locale? locale;
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+
+
+    Future<void> handleRatioScreen() async {
+    var size = Get.size;
+    ratioWidth = size.width / 374;
+    ratioHeight = size.height / 812;
+    scaleFontsize = math.min(ratioWidth!, ratioHeight!);
+    if (scaleFontsize >= 1) {
+      scaleFontsize = 1;
+    } else {
+      scaleFontsize = 0.85;
+    }
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      title: 'Airdata',
+      // navigatorKey: HttpInspector.instance.alice.getNavigatorKey(),
+      debugShowCheckedModeBanner: false,
+      locale: localeL,
+
+      // fallbackLocale: const Locale('vi', 'VN'),
+      // locale: getLanguageWithDevice(),
+
+      // supportedLocales: S.delegate.supportedLocales,
+
+      // navigatorObservers: [MyObserver()],
+      defaultTransition: Transition.rightToLeftWithFade,
+      // customTransition: TransitionApp(), fallbackLocale: localeL,
+      transitionDuration: const Duration(milliseconds: 200),
+      localizationsDelegates: const [
+        // S.delegate,
+        // GlobalCupertinoLocalizations.delegate,
+        // GlobalMaterialLocalizations.delegate,
+        // GlobalWidgetsLocalizations.delegate,
+        // DefaultCupertinoLocalizations.delegate
+      ],
+      // initialRoute: AppRoutes.splash,
+      initialRoute: AppRoutes.home,
+      routingCallback: (value) async {
+        if (value?.current == AppRoutes.splash) {
+          await handleRatioScreen();
+          // await checkToken();
+          // if (isFirstRun) {
+          //   navigatorOffAllWithRouteName(routeName: AppRoutes.startedPage);
+          // } else if (isLogged) {
+          //   navigatorOffAllWithRouteName(routeName: AppRoutes.home);
+          // } else {
+          //   navigatorOffAllWithRouteName(routeName: AppRoutes.login);
+          // }
+
+          // if (isLogged) {
+          //   navigatorOffAllWithRouteName(routeName: AppRoutes.home);
+          // } else {
+          //   navigatorOffAllWithRouteName(routeName: AppRoutes.login);
+          // }
+
+          // final appVersion = await getVersionConfig();
+
+          // if (appVersion != null) {
+          //   _progressUpgrade(appVersion);
+          // }
+        }
+      },
+     getPages: [
+    // Add your page routes here
+    GetPage(name: AppRoutes.home, page: () => HomePage()),
+    GetPage(name: AppRoutes.sendRequire, page: () => SendRequirePage()),  // Add corresponding page for sendRequire route
+    GetPage(name: AppRoutes.lease, page: () => LeasePage()),  // Add corresponding page for lease route
+    GetPage(name: AppRoutes.sell, page: () => SellPage()),  // Add corresponding page for sell route
+    GetPage(name: AppRoutes.account, page: () => AccountPage()),  // Add corresponding page for account route
+    GetPage(name: AppRoutes.postNew, page: () => PostNewPage()),  // Add corresponding page for postNew route
+  ],
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          primarySwatch: Colors.blue,
+          tabBarTheme: TabBarTheme(indicatorColor: AppColors.border),
+          colorScheme: ColorScheme.light(primary: AppColors.active),
+          dividerTheme: DividerThemeData(color: AppColors.border),
+          primaryColor: AppColors.active,
+          dividerColor: AppColors.border,
+          datePickerTheme:
+              DatePickerThemeData(backgroundColor: Colors.white, elevation: 0),
+          dialogTheme: DialogTheme(backgroundColor: Colors.white, elevation: 0),
+          bottomSheetTheme:
+              BottomSheetThemeData(backgroundColor: Colors.white, elevation: 0),
+          indicatorColor: AppColors.blueGradient,
+          fontFamily: "Lato-Medium"),
+      builder: (context, child) {
+        final MediaQueryData data = MediaQuery.of(context);
+        // return 
+        //  FloatingNotificationWidget(
+        //   child: MediaQuery(
+        //     data: data.copyWith(textScaler: TextScaler.linear(1)),
+        //     child: child!,
+        //   ),
+        // );
+        return MediaQuery(
+          data: data.copyWith(textScaleFactor: 1),
+          child: child!,
+        );
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
