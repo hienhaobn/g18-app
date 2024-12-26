@@ -49,8 +49,8 @@ class _MyAppState extends State<MyApp> {
 
     Future<void> handleRatioScreen() async {
     var size = Get.size;
-    ratioWidth = size.width / 374;
-    ratioHeight = size.height / 812;
+    ratioWidth = size.width / 137;
+    ratioHeight = size.height / 393;
     scaleFontsize = math.min(ratioWidth!, ratioHeight!);
     if (scaleFontsize >= 1) {
       scaleFontsize = 1;

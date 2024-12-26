@@ -37,6 +37,8 @@ dependencies:
   flutter_localization: ^0.3.0
   persistent_bottom_nav_bar: ^6.2.1
   get_storage: ^2.1.1
+  carousel_slider: ^5.0.0
+  smooth_page_indicator: ^1.2.0
 
 
 

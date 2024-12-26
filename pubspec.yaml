@@ -5,3 +5,5 @@ environment:
 
 dev_dependencies:
   melos: ^6.2.0
+dependencies:
+  carousel_slider: ^5.0.0

@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class IconPath {
   static const icon_path = 'assets/icons';
 
@@ -7,4 +9,15 @@ class IconPath {
   static const String ic_vi_line = '$icon_path/ic_vi_line.svg';
   static const String ic_user_fill = '$icon_path/ic_user_fill.svg';
   static const String ic_post_news = '$icon_path/ic_post_news.png';
+  static const String ic_search = '$icon_path/ic_search_home.svg';
+  static const String ic_notifi = '$icon_path/ic_notification_home.svg';
+  static const String ic_bds_sell = '$icon_path/ic_bds_sell.svg';
+  static const String ic_bds_lease = '$icon_path/ic_bds_lease.svg';
+  static const String ic_report = '$icon_path/ic_report.svg';
+  static const String ic_ware_house = '$icon_path/ic_warehouse.svg';
+  static const String ic_community = '$icon_path/ic_community.svg';
+  static const String ic_project = '$icon_path/ic_project.svg';
+  static const String ic_required_ware_house = '$icon_path/ic_required_warehouse.svg';
+  static const String ic_my_ware_house = '$icon_path/ic_my_warehouse.svg';
+  static const String ic_phanyeucau = '$icon_path/ic_phanyeucau.svg';
   }
