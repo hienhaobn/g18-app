@@ -36,6 +36,7 @@ dependencies:
   local_auth: ^2.3.0
   flutter_localization: ^0.3.0
   persistent_bottom_nav_bar: ^6.2.1
+  get_storage: ^2.1.1
 
 
 
@@ -81,6 +82,8 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/lang/en.json
+    - assets/lang/vi.json
   
   fonts:
     - family: Montserrat-Medium

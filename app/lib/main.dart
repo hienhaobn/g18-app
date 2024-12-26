@@ -1,3 +1,4 @@
+import 'package:app/base_hieu/app_translations.dart';
 import 'package:app/base_hieu/colors.dart';
 import 'package:app/base_hieu/routes.dart';
 import 'package:app/ui/account_page/account_page.dart';
@@ -9,14 +10,28 @@ import 'package:app/ui/send_required_page/send_required_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
+import 'package:get_storage/get_storage.dart';
 
 double? ratioHeight;
 double? ratioWidth;
 late double scaleFontsize;
 Locale? localeL;
 
-void main() {
+void main() async{
+  // Đảm bảo nạp các file JSON trước khi chạy ứng dụng
+  WidgetsFlutterBinding.ensureInitialized();
+  await loadTranslations();
+  await GetStorage.init();
   runApp(const MyApp());
+}
+
+Future<void> loadTranslations() async {
+  // Lấy các bản dịch từ lớp AppTranslations
+  AppTranslations appTranslations = AppTranslations();
+  Map<String, Map<String, String>> translations = await appTranslations.loadTranslations();
+  
+  // Cập nhật bản dịch vào GetX
+  Get.addTranslations(translations);
 }
 
 class MyApp extends StatefulWidget {
@@ -47,52 +62,20 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+       translations: AppTranslations(),
+      locale: Locale('vi', 'VN'), // Ngôn ngữ mặc định
+      fallbackLocale: Locale('en', 'US'),
       title: 'Airdata',
-      // navigatorKey: HttpInspector.instance.alice.getNavigatorKey(),
       debugShowCheckedModeBanner: false,
-      locale: localeL,
-
-      // fallbackLocale: const Locale('vi', 'VN'),
-      // locale: getLanguageWithDevice(),
-
-      // supportedLocales: S.delegate.supportedLocales,
-
-      // navigatorObservers: [MyObserver()],
       defaultTransition: Transition.rightToLeftWithFade,
-      // customTransition: TransitionApp(), fallbackLocale: localeL,
       transitionDuration: const Duration(milliseconds: 200),
-      localizationsDelegates: const [
-        // S.delegate,
-        // GlobalCupertinoLocalizations.delegate,
-        // GlobalMaterialLocalizations.delegate,
-        // GlobalWidgetsLocalizations.delegate,
-        // DefaultCupertinoLocalizations.delegate
-      ],
+     
       // initialRoute: AppRoutes.splash,
       initialRoute: AppRoutes.home,
       routingCallback: (value) async {
         if (value?.current == AppRoutes.splash) {
           await handleRatioScreen();
-          // await checkToken();
-          // if (isFirstRun) {
-          //   navigatorOffAllWithRouteName(routeName: AppRoutes.startedPage);
-          // } else if (isLogged) {
-          //   navigatorOffAllWithRouteName(routeName: AppRoutes.home);
-          // } else {
-          //   navigatorOffAllWithRouteName(routeName: AppRoutes.login);
-          // }
-
-          // if (isLogged) {
-          //   navigatorOffAllWithRouteName(routeName: AppRoutes.home);
-          // } else {
-          //   navigatorOffAllWithRouteName(routeName: AppRoutes.login);
-          // }
-
-          // final appVersion = await getVersionConfig();
-
-          // if (appVersion != null) {
-          //   _progressUpgrade(appVersion);
-          // }
+         
         }
       },
      getPages: [

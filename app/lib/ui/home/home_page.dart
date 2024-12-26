@@ -24,7 +24,7 @@ class HomePage extends BaseGetWidget<HomePageController> {
       child: Obx(
         () => Scaffold(
           appBar: AppBar(
-            title: Text('Home'),
+            title:Text('welcome_message'.tr)
           ),
           body: controller.selectedIndex.value == -1
               ? Center(child: Text("Nội dung mặc định của HomePage")) // Nội dung mặc định
