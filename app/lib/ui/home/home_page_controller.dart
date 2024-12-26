@@ -5,7 +5,7 @@ import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class HomePageController extends BaseGetXController {
   late PersistentTabController tabController;
-  RxInt selectedIndex = (1).obs; // Khởi đầu với không tab nào được chọn.
+  RxInt selectedIndex = (-1).obs; // Khởi đầu với không tab nào được chọn.
 
 
   @override

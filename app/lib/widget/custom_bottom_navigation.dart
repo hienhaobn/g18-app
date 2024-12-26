@@ -57,7 +57,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           onPressed: () => _onItemTapped(2,),
-          child: AppAssets.pngImage(ImagePath.img_post_news),
+          child: AppAssets.pngImage(IconPath.ic_post_news),
         ),
      bottomNavigationBar:
            

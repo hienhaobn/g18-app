@@ -26,7 +26,9 @@ class HomePage extends BaseGetWidget<HomePageController> {
           appBar: AppBar(
             title: Text('Home'),
           ),
-          body: _buildScreens[controller.selectedIndex.value],
+          body: controller.selectedIndex.value == -1
+              ? Center(child: Text("Nội dung mặc định của HomePage")) // Nội dung mặc định
+              : _buildScreens[controller.selectedIndex.value], // Nội dung theo tab được chọn
         ),
       ),
     );

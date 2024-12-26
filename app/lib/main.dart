@@ -97,7 +97,28 @@ class _MyAppState extends State<MyApp> {
       },
      getPages: [
     // Add your page routes here
-    GetPage(name: AppRoutes.home, page: () => HomePage()),
+    GetPage(name: AppRoutes.home, page: () => HomePage(),
+    children: [
+      GetPage(
+        name: AppRoutes.sendRequire,
+        page: () => SendRequirePage(),
+        // arguments: (args) => SendRequirePage.fromArgs(args), // nếu cần
+      ),
+      GetPage(
+        name: AppRoutes.lease,
+        page: () => LeasePage(),
+        // arguments: (args) => SearchModel.fromArgs(args), // nếu cần
+      ),
+        GetPage(
+        name: AppRoutes.postNew,
+        page: () => PostNewPage(),
+      ),
+      GetPage(
+        name: AppRoutes.account,
+        page: () => AccountPage(),
+      ),
+    ]
+    ),
     GetPage(name: AppRoutes.sendRequire, page: () => SendRequirePage()),  // Add corresponding page for sendRequire route
     GetPage(name: AppRoutes.lease, page: () => LeasePage()),  // Add corresponding page for lease route
     GetPage(name: AppRoutes.sell, page: () => SellPage()),  // Add corresponding page for sell route
