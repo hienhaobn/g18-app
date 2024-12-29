@@ -39,6 +39,7 @@ class BuildDropdownTypeBDS extends StatelessWidget {
                   : null,
               hintText: 'Chọn loại BĐS',
               onChange: (value) {
+
                 controller.typeBDSController.value.text = value ?? '';
                 controller.typeBDSController.refresh();
                 controller.selectedRealEstateType.value =

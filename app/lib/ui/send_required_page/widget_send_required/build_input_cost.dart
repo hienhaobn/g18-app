@@ -25,13 +25,7 @@ class BuildInputCost extends StatelessWidget {
             formatStringToMoneyNumber(formatNumberPriceFromString(controller.inputValueCost.value)) : '',
         controller: controller.selectedPriceController,
         hintText: "Nhập tài chính",
-          hintStyle: AppStyles.titleStyleV2,
-        // controller
-        //     .fontController.currentFontStyle
-        //     .copyWith(
-        //         color:
-        //             AppColors.n777777.withOpacity(0.7)),
-                    
+          hintStyle: AppStyles.titleStyleV2,           
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Tài chính không được để trống';
@@ -39,9 +33,15 @@ class BuildInputCost extends StatelessWidget {
           return null;
         },
         onChanged: (value) {
-          controller.inputValueCost.value = value;
+          controller.inputValueCost.value = value.trim();
         }
       ),
     );
   }
 }
+
+ // controller
+        //     .fontController.currentFontStyle
+        //     .copyWith(
+        //         color:
+        //             AppColors.n777777.withOpacity(0.7)),

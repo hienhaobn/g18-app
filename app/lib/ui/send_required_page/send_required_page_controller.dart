@@ -4,6 +4,7 @@ import 'package:app/base_hieu/font_controller.dart';
 import 'package:app/model_hieu/label_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SendRequiredPageController extends BaseGetXController {
   var nhucaudangtin = Rxn<LabelModal?>(LabelModal(value: "RENTING"));
@@ -47,12 +48,13 @@ class SendRequiredPageController extends BaseGetXController {
   //xác nhận định danh
   RxBool isCustomerSelected = false.obs;
   RxBool isAgencySelected = false.obs;
+  RxString valueCheckBox = ''.obs;
 
   // Biến  để lưu trạng thái
   Rx<bool> disableButton = true.obs;
-   final formKey = GlobalKey<FormState>();
-   final typeBDSValidationError = ''.obs;
-   final selectTypeBDSValidationError = ''.obs;
+  final formKey = GlobalKey<FormState>();
+  final typeBDSValidationError = ''.obs;
+  final selectTypeBDSValidationError = ''.obs;
 
   @override
   void onInit() {
@@ -60,40 +62,49 @@ class SendRequiredPageController extends BaseGetXController {
     typeBDSController.value.addListener(() {
       listenDisableBtn();
     });
-     selectTypeBDSController.value.addListener(() {
+    selectTypeBDSController.value.addListener(() {
       listenDisableBtn();
     });
-     fullNameController.addListener(() {
+    selectedPriceController.addListener(() {
       listenDisableBtn();
     });
-     phoneNumberController.addListener(() {
+    fullNameController.addListener(() {
       listenDisableBtn();
     });
-     emailController.addListener(() {
+    phoneNumberController.addListener(() {
+      listenDisableBtn();
+    });
+    emailController.addListener(() {
       listenDisableBtn();
     });
   }
+
 //check empty để cho phép thực hiện nút button
   void listenDisableBtn() {
-    disableButton.value = typeBDSController.value.text.trim().isEmpty ||
+    disableButton.value = 
+        typeBDSController.value.text.trim().isEmpty ||
         selectTypeBDSController.value.text.trim().isEmpty ||
+        selectedPriceController.value.text.trim().isEmpty ||
         fullNameController.value.text.trim().isEmpty ||
         phoneNumberController.value.text.trim().isEmpty ||
         emailController.value.text.trim().isEmpty;
   }
+
   //check trống của loại bđs để show ra text
-   void validateTypeBDS() {
+  void validateTypeBDS() {
     if (typeBDSController.value.text.isEmpty) {
       typeBDSValidationError.value = 'Loại BĐS không được để trống';
     } else {
       typeBDSValidationError.value = '';
     }
   }
-   //check trống của chọn loại bđs để show ra text
-   void validateSelectTypeBDS() {
+
+  //check trống của chọn loại bđs để show ra text
+  void validateSelectTypeBDS() {
     if (selectTypeBDSController.value.text.isEmpty) {
       selectTypeBDSValidationError.value = 'Loại hình BĐS không được để trống';
-    } else {
+    } 
+    else {
       selectTypeBDSValidationError.value = '';
     }
   }
@@ -120,11 +131,13 @@ class SendRequiredPageController extends BaseGetXController {
   void toggleCustomer() {
     isCustomerSelected.value = true;
     isAgencySelected.value = false;
+    valueCheckBox.value = 'CUSTOMER';
   }
 
   void toggleAgency() {
     isAgencySelected.value = true;
     isCustomerSelected.value = false;
+    valueCheckBox.value = 'AGENCY';
   }
 
   Future<void> sendRequiredButton() async {
@@ -137,7 +150,7 @@ class SendRequiredPageController extends BaseGetXController {
       // userInfo = res.data;
       // update();
       // }
-      await Future.delayed(Duration(seconds: 3)); // Thêm delay 3 giây
+      await Future.delayed(Duration(seconds:3)); 
     } catch (e) {
       // handleOnError(e);
     } finally {
