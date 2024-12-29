@@ -1,6 +1,9 @@
 import 'package:app/base_hieu/app_translations.dart';
+import 'package:app/base_hieu/color_controller.dart';
 import 'package:app/base_hieu/colors.dart';
+import 'package:app/base_hieu/font_controller.dart';
 import 'package:app/base_hieu/routes.dart';
+import 'package:app/base_hieu/theme_controller.dart';
 import 'package:app/ui/account_page/account_page.dart';
 import 'package:app/ui/home/home_page.dart';
 import 'package:app/ui/lease_page/lease_page.dart';
@@ -11,17 +14,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
 import 'package:get_storage/get_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:logger/logger.dart';
 
+late SharedPreferences prefs;
 double? ratioHeight;
 double? ratioWidth;
 late double scaleFontsize;
 Locale? localeL;
+final logger = Logger();
 
 void main() async{
   // Đảm bảo nạp các file JSON trước khi chạy ứng dụng
   WidgetsFlutterBinding.ensureInitialized();
   await loadTranslations();
   await GetStorage.init();
+    Get.put(ThemeController());
+  Get.put(FontController());
+  Get.put(ColorController());
   runApp(const MyApp());
 }
 
@@ -111,9 +121,9 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           tabBarTheme: TabBarTheme(indicatorColor: AppColors.border),
-          colorScheme: ColorScheme.light(primary: AppColors.active),
+          colorScheme: ColorScheme.light(primary: AppColors.p4C28A5),
           dividerTheme: DividerThemeData(color: AppColors.border),
-          primaryColor: AppColors.active,
+          primaryColor: AppColors.p4C28A5,
           dividerColor: AppColors.border,
           datePickerTheme:
               DatePickerThemeData(backgroundColor: Colors.white, elevation: 0),
