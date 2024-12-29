@@ -1,4 +1,3 @@
-
 import 'package:app/base_hieu/base_dropdown.dart';
 import 'package:app/base_hieu/colors.dart';
 import 'package:app/base_hieu/styles.dart';
@@ -28,10 +27,13 @@ class BuildDropdownTypeOfBDS extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               color: AppColors.border,
+               border: Border.all(
+                color: controller.selectTypeBDSValidationError.value.isNotEmpty
+                    ? Colors.red // Viền đỏ khi có lỗi
+                    : AppColors.border, // Viền bình thường khi không có lỗi
+              ),
             ),
-            child:
-               
-                BuildDropDownV2<LabelModal>(
+            child: BuildDropDownV2<LabelModal>(
               currentValue:
                   controller.selectedRealEstateType.value, // Đảm bảo kiểu đúng
               hintText: 'Chọn loại hình BĐS',
@@ -39,7 +41,7 @@ class BuildDropdownTypeOfBDS extends StatelessWidget {
                 controller.selectedRealEstateType.value = value;
                 controller.selectedRealEstateType.refresh();
                 // print (value?.value ?? '');
-
+                controller.validateSelectTypeBDS();
               },
 
               childs: controller.typeBDSOptions
@@ -55,6 +57,17 @@ class BuildDropdownTypeOfBDS extends StatelessWidget {
                   .toList(),
             ),
           ),
+              if (controller.selectTypeBDSValidationError.value.isNotEmpty)
+        Padding(
+          padding: const EdgeInsets.only(left: 15, top: 5),
+          child: Text(
+            controller.selectTypeBDSValidationError.value,
+            style: TextStyle(
+              color: Colors.red,
+              fontSize: 12,
+            ),
+          ),
+        ),
         ],
       ),
     );

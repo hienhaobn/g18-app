@@ -28,6 +28,12 @@ class BuildInformation extends StatelessWidget {
           controller: controller.fullNameController,
           fillColor: AppColors.border,
           padding: EdgeInsets.symmetric(horizontal: 15),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Họ và tên không được để trống';
+            }
+            return null;
+          },
         ),
         12.height,
         TextRequired(
@@ -40,6 +46,12 @@ class BuildInformation extends StatelessWidget {
           controller: controller.phoneNumberController,
           fillColor: AppColors.border,
           padding: EdgeInsets.symmetric(horizontal: 15),
+           validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Số điện thoại không được để trống';
+            }
+            return null;
+          },
         ),
         12.height,
         TextRequired(
@@ -52,6 +64,12 @@ class BuildInformation extends StatelessWidget {
           controller: controller.emailController,
           fillColor: AppColors.border,
           padding: EdgeInsets.symmetric(horizontal: 15),
+           validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Gmail không được để trống';
+            }
+            return null;
+          },
         ),
         20.height,
       ],

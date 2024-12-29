@@ -78,14 +78,16 @@ class SendRequirePage extends BaseGetWidget<SendRequiredPageController> {
           ),
         ),
         body: Container(
-            width: double.infinity,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: SingleChildScrollView(
+          width: double.infinity,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: controller.formKey,
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,10 +164,10 @@ class SendRequirePage extends BaseGetWidget<SendRequiredPageController> {
                           //                           validator: ValidationBuilder());
                           //                     }),
                           //                     8.height,
-
+                      
                           //đường phố
                           BuildInputStreet(controller: controller),
-
+                      
                           8.height,
                           //
                           Text(
@@ -175,14 +177,14 @@ class SendRequirePage extends BaseGetWidget<SendRequiredPageController> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           12.height,
-
+                      
                           //loại bđs
                           BuildDropdownTypeBDS(controller: controller),
-
+                      
                           12.height,
                           //loại hình bđs
                           BuildDropdownTypeOfBDS(controller: controller),
-
+                      
                           12.height,
                           //mã căn hộ
                           Obx(() {
@@ -194,7 +196,7 @@ class SendRequirePage extends BaseGetWidget<SendRequiredPageController> {
                               return SizedBox();
                             }
                           }),
-
+                      
                           //tòa khu - tầng dãy
                           Obx(() => (controller
                                       .typeBDSController.value.value.text ==
@@ -207,42 +209,41 @@ class SendRequirePage extends BaseGetWidget<SendRequiredPageController> {
                                   "APARTMENT")
                               ? BuildInputNumberBedRoom(controller: controller)
                               : SizedBox()),
-
+                      
                           //diện tích
                           BuildInputAcreage(controller: controller),
                           12.height,
-
+                      
                           //mặt tiền
                           Obx(() =>
                               (controller.typeBDSController.value.value.text !=
                                       "APARTMENT")
                                   ? BuildInputFacade(controller: controller)
                                   : SizedBox()),
-
+                      
                           //số tầng
                           Obx(() => (controller
                                           .typeBDSController.value.value.text ==
                                       "BUILDING" ||
-                                  controller
-                                          .typeBDSController.value.value.text ==
+                                  controller.typeBDSController.value.value.text ==
                                       "REAL_ESTATE")
                               ? BuildInputNumberOfFloor(controller: controller)
                               : SizedBox()),
-
+                      
                           //hướng
                           BuildDropDownDirection(controller: controller),
-
+                      
                           //vị trí
                           BuildDropDownLocation(controller: controller),
-
+                      
                           //tài chính
                           BuildInputCost(controller: controller),
                           12.height,
-
+                      
                           //mô tả
                           BuildInputDescription(controller: controller),
                           20.height,
-
+                      
                           Text(
                             "Thông tin cá nhân",
                             style: controller.fontController.currentFontStyle
@@ -250,28 +251,44 @@ class SendRequirePage extends BaseGetWidget<SendRequiredPageController> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           12.height,
-
+                      
                           //họ và tên - sđt - email
                           BuildInformation(controller: controller),
-
+                      
                           //xác nhận định danh
                           BuildConfirmIdentity(controller: controller),
-
+                      
                           20.height
                         ],
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
+        ),
         bottomNavigationBar: Container(
             margin: EdgeInsets.only(bottom: 20, left: 15, right: 15),
-            child: BottomButton(onTap: () {
-              print ('Nhấn');
-              controller.sendRequiredButton();
-            }, title: 'Gửi yêu cầu')),
+            child: BottomButton(
+                // onTap: (controller.disableButton.value)
+                //     ? () {
+                //         print('ko đủ điều kiện');
+                //       }
+                //     : () {
+                //         print('Nhấn');
+                //         controller.sendRequiredButton();
+                //       },
+              onTap:   () {
+                controller.validateTypeBDS();
+                controller.validateSelectTypeBDS();
+                    if (controller.formKey.currentState!.validate()) {
+                      controller.sendRequiredButton();
+                    } else {
+                      print('Form không hợp lệ!');
+                    }
+                  },
+                title: 'Gửi yêu cầu')),
       ),
     );
   }

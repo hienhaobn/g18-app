@@ -1,6 +1,7 @@
 import 'package:app/base_hieu/colors.dart';
 import 'package:app/base_hieu/font_controller.dart';
 import 'package:app/base_hieu/spacing_extension.dart';
+import 'package:app/base_hieu/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -11,15 +12,40 @@ class MoneyInputField extends StatefulWidget {
   final String hintText;
   final void Function(String)? onChanged;
   final String label;
-   String? priceLable;
-   final TextStyle? hintStyle;
-   final String? Function(String?)? validator;
-   
+  String? priceLable;
+  final TextStyle? hintStyle;
+  final String? Function(String?)? validator;
+  final Color? fillColor;
+  final Widget? iconPrefix;
+  final String? suffixText;
+  final double? fontSize;
+  final bool isShowSuffix;
+  final Widget? iconSufix;
+  final EdgeInsets? padding;
+  final TextStyle? errorStyle;
+  final OutlineInputBorder? enabledBorder;
+  final OutlineInputBorder? focusedBorder;
+   bool obscureText;
 
   MoneyInputField({
     required this.controller,
     required this.hintText,
-    this.onChanged, required this.label,  this.priceLable,this.hintStyle, this.validator
+    this.onChanged,
+    required this.label,
+    this.priceLable,
+    this.hintStyle,
+    this.validator,
+    this.fillColor,
+    this.iconPrefix,
+    this.suffixText,
+    this.fontSize,
+    this.isShowSuffix = false,
+    this.iconSufix,
+    this.padding,
+    this.errorStyle,
+    this.enabledBorder,
+    this.focusedBorder,
+    this.obscureText = false,
   });
 
   @override
@@ -40,7 +66,8 @@ class _MoneyInputFieldState extends State<MoneyInputField> {
     _focusNode.addListener(() {
       if (_focusNode.hasFocus) {
         // Đặt con trỏ ở cuối
-        widget.controller.selection = TextSelection.collapsed(offset: widget.controller.text.length);
+        widget.controller.selection =
+            TextSelection.collapsed(offset: widget.controller.text.length);
       }
     });
   }
@@ -53,36 +80,34 @@ class _MoneyInputFieldState extends State<MoneyInputField> {
 
   @override
   Widget build(BuildContext context) {
+    bool obscureText = true;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            Text(
-              widget.label,
-              style: fontController.currentFontStyle
-              // TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
+            Text(widget.label, style: fontController.currentFontStyle
+                // TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
             5.width,
             // Obx(
-            //   () => 
-              Text(
-                widget.priceLable ??'',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            //   () =>
+            Text(
+              widget.priceLable ?? '',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               // ),
             ),
           ],
         ),
         const SizedBox(height: 4),
         TextFormField(
-          validator:widget.validator ,
+          validator: widget.validator,
           controller: widget.controller,
-          focusNode: _focusNode,  // Gắn focusNode vào TextField
+          focusNode: _focusNode, // Gắn focusNode vào TextField
           keyboardType: TextInputType.number,
           textAlign: TextAlign.end,
-          
+
           inputFormatters: [
-          
             FilteringTextInputFormatter.digitsOnly,
             TextInputFormatter.withFunction((oldValue, newValue) {
               final oldText = oldValue.text.replaceAll('.', '');
@@ -92,7 +117,7 @@ class _MoneyInputFieldState extends State<MoneyInputField> {
               final cursorPositionBefore = newValue.selection.end;
 
               final numericValue = int.tryParse(newText);
-              String formattedValue = newText;  // Khởi tạo giá trị mặc định
+              String formattedValue = newText; // Khởi tạo giá trị mặc định
 
               if (numericValue != null) {
                 formattedValue = NumberFormat("#,###", "en_US")
@@ -105,14 +130,16 @@ class _MoneyInputFieldState extends State<MoneyInputField> {
 
               // Vị trí con trỏ mới sau khi định dạng khi thêm số
               final newCursorPosition =
-                  (cursorPositionBefore + lengthDifference).clamp(0, formattedValue.length);
+                  (cursorPositionBefore + lengthDifference)
+                      .clamp(0, formattedValue.length);
 
               // Trường hợp khi xóa số
               if (newText.length < oldText.length) {
                 // Nếu xóa, ta di chuyển con trỏ về cuối
                 return TextEditingValue(
                   text: formattedValue,
-                  selection: TextSelection.collapsed(offset: formattedValue.length),
+                  selection:
+                      TextSelection.collapsed(offset: formattedValue.length),
                 );
               }
 
@@ -124,26 +151,39 @@ class _MoneyInputFieldState extends State<MoneyInputField> {
           ],
           decoration: InputDecoration(
             hintText: widget.hintText,
-            hintStyle: widget.hintStyle,
-            filled: true, // Kích hoạt màu nền
-            fillColor: AppColors.border, // Màu nền xám
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8), // Viền bo góc 8 khi không focus
-              borderSide: BorderSide(
-                color: AppColors.border, // Viền xám nhạt khi không focus
-                // Độ dày viền khi không focus
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8), // Viền bo góc 8 khi focus
-              borderSide: BorderSide(
-                color: AppColors.p4C28A5, // Màu tím khi focus
-                width: 2, // Độ dày viền khi focus
-              ),
-            ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            fillColor: widget.fillColor ?? Colors.white,
+            prefixIcon: widget.iconPrefix,
+            suffixText: widget.suffixText,
+            prefixIconConstraints:
+                const BoxConstraints(minWidth: 54, minHeight: 46),
+            hintStyle: widget.hintStyle ??
+                AppStyles.normalStyle.copyWith(
+                    color: AppColors.hint,
+                    fontSize:
+                        widget.fontSize ?? AppStyles.normalStyle.fontSize),
+            suffixIcon:
+                widget.isShowSuffix ? _buildSuffixIcon() : widget.iconSufix,
+            contentPadding: widget.padding,
+            filled: true,
+            errorStyle: widget.errorStyle,
+            enabledBorder: widget.enabledBorder ??
+                OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide:
+                        BorderSide(color: Theme.of(context).dividerColor)),
+            focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(color: Colors.red, width: 2)),
+            errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(color: Colors.red)),
+            focusedBorder: widget.focusedBorder ??
+                OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Theme.of(context).primaryColor),
+                ),
           ),
-          onChanged:  widget.onChanged,
+          onChanged: widget.onChanged,
           // (value) {
           //   // Cập nhật giá trị cho priceLable khi giá trị trong TextField thay đổi
           //   widget.priceLable?.value = widget.controller.text;
@@ -151,10 +191,22 @@ class _MoneyInputFieldState extends State<MoneyInputField> {
           //     widget.onChanged!(value); // Gọi hàm onChanged nếu có
           //   }
           // },
-          
         ),
         // const SizedBox(height: 16),
       ],
+    );
+  }
+
+  Widget _buildSuffixIcon() {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          widget.obscureText = !widget.obscureText;
+        });
+      },
+      child: widget.obscureText
+          ? const Icon(Icons.visibility_off, color: AppColors.p4C28A5)
+          : const Icon(Icons.visibility, color: AppColors.p4C28A5),
     );
   }
 }

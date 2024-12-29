@@ -1,4 +1,3 @@
-
 import 'package:app/base_hieu/base_dropdown.dart';
 import 'package:app/base_hieu/colors.dart';
 import 'package:app/base_hieu/const.dart';
@@ -28,6 +27,11 @@ class BuildDropdownTypeBDS extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               color: AppColors.border,
+              border: Border.all(
+                color: controller.typeBDSValidationError.value.isNotEmpty
+                    ? Colors.red // Viền đỏ khi có lỗi
+                    : AppColors.border, // Viền bình thường khi không có lỗi
+              ),
             ),
             child: BuildDropDownV2<String>(
               currentValue: controller.typeBDSController.value.text.isNotEmpty
@@ -37,10 +41,12 @@ class BuildDropdownTypeBDS extends StatelessWidget {
               onChange: (value) {
                 controller.typeBDSController.value.text = value ?? '';
                 controller.typeBDSController.refresh();
-                controller.selectedRealEstateType.value = null; // Đặt lại danh sách loại hình BĐS
+                controller.selectedRealEstateType.value =
+                    null; // Đặt lại danh sách loại hình BĐS
                 controller.updateTypeBDSOptions(
                     value); // Cập nhật danh sách loại hình BĐS
                 // print (value);
+                controller.validateTypeBDS(); // Kiểm tra điều kiện
               },
               childs: lstAirline2
                   .map<DropdownMenuItem<String>>(
@@ -55,6 +61,17 @@ class BuildDropdownTypeBDS extends StatelessWidget {
                   .toList(),
             ),
           ),
+          if (controller.typeBDSValidationError.value.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(left: 15, top: 5),
+              child: Text(
+                controller.typeBDSValidationError.value,
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 12,
+                ),
+              ),
+            ),
         ],
       ),
     );

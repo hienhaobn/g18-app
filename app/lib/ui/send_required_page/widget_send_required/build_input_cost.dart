@@ -18,6 +18,8 @@ class BuildInputCost extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => MoneyInputField(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        fillColor: AppColors.border,
         label: "Nhập tài chính",
         priceLable: ( formatStringToMoneyNumber(formatNumberPriceFromString(controller.inputValueCost.value)) != "0") ?
             formatStringToMoneyNumber(formatNumberPriceFromString(controller.inputValueCost.value)) : '',
