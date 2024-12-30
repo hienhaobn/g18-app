@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:app/model_hieu/label_model.dart';
 
+
 const DX_DEFAULT_VALUE = 20.0;
 const DY_DEFAULT_VALUE = 50.0;
 String WARNING_LOADING = 'Cảnh báo';//Tran.tr.unstable_connection_notice;
@@ -91,4 +92,10 @@ List<LabelModal> LABEL_LOCATION = [
 List<LabelModal> ListXacNhanDinhDanh = [
   LabelModal(value: 'CUSTOMER', label: 'Khách hàng'),
   LabelModal(value: 'AGENCY', label: 'Môi giới bất động sản')
+];
+
+//nhu cầu đăng tin
+List<LabelModal> NHUCAUDANGTIN = [
+  LabelModal(label: 'Cần bán BĐS', value: 'SELLING'),
+  LabelModal(label: 'Cần cho thuê BĐS', value: 'RENTING'),
 ];

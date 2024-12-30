@@ -27,6 +27,7 @@ final logger = Logger();
 void main() async{
   // Đảm bảo nạp các file JSON trước khi chạy ứng dụng
   WidgetsFlutterBinding.ensureInitialized();
+   prefs = await SharedPreferences.getInstance();
   await loadTranslations();
   await GetStorage.init();
     Get.put(ThemeController());
