@@ -1,6 +1,7 @@
 import 'package:app/base_hieu/base_dropdown.dart';
 import 'package:app/base_hieu/colors.dart';
 import 'package:app/base_hieu/const.dart';
+import 'package:app/base_hieu/styles.dart';
 import 'package:app/base_hieu/text_required.dart';
 import 'package:app/ui/post_new_page/post_new_page_controller.dart';
 import 'package:flutter/material.dart';
@@ -25,19 +26,18 @@ class BuildDropdownNhucau extends StatelessWidget {
             padding: const EdgeInsets.only(left: 15, right: 5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              color: AppColors.border,
+              color: AppColors.p4C28A5,
               border: Border.all(
-                color: controller
-                        .selectTypeBDSValidationError.value.isNotEmpty
+                color: controller.selectTypeBDSValidationError.value.isNotEmpty
                     // ||
                     //         controller.selectTypeBDSValidationError.value != ""
                     ? Colors.red // Viền đỏ khi có lỗi
-                    : AppColors
-                        .border, // Viền bình thường khi không có lỗi
+                    : AppColors.border, // Viền bình thường khi không có lỗi
               ),
             ),
             child: BuildDropDownV2<String>(
-              hintText: 'Chọn nhu cầu',
+              hintText: 'Chọn nhu cầu đăng tin',
+              stylehint: AppStyles.titleStyleV2.copyWith(color: AppColors.white),
               currentValue: controller.selectedValue.value.isNotEmpty
                   ? controller.selectedValue.value
                   : null,
