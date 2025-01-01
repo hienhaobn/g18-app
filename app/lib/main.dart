@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:app/base_hieu/app_translations.dart';
 import 'package:app/base_hieu/color_controller.dart';
 import 'package:app/base_hieu/colors.dart';
@@ -5,6 +7,7 @@ import 'package:app/base_hieu/font_controller.dart';
 import 'package:app/base_hieu/routes.dart';
 import 'package:app/base_hieu/theme_controller.dart';
 import 'package:app/ui/account_page/account_page.dart';
+import 'package:app/ui/account_page/widget_account_page/setting_infor_page.dart';
 import 'package:app/ui/home/home_page.dart';
 import 'package:app/ui/lease_page/lease_page.dart';
 import 'package:app/ui/post_new_page/post_new_page.dart';
@@ -113,11 +116,12 @@ class _MyAppState extends State<MyApp> {
       ),
     ]
     ),
-    GetPage(name: AppRoutes.sendRequire, page: () => SendRequirePage()),  // Add corresponding page for sendRequire route
-    GetPage(name: AppRoutes.lease, page: () => LeasePage()),  // Add corresponding page for lease route
-    GetPage(name: AppRoutes.sell, page: () => SellPage()),  // Add corresponding page for sell route
-    GetPage(name: AppRoutes.account, page: () => AccountPage()),  // Add corresponding page for account route
-    GetPage(name: AppRoutes.postNew, page: () => PostNewPage()),  // Add corresponding page for postNew route
+    GetPage(name: AppRoutes.sendRequire, page: () => SendRequirePage()),  
+    GetPage(name: AppRoutes.lease, page: () => LeasePage()), 
+    GetPage(name: AppRoutes.sell, page: () => SellPage()),  
+    GetPage(name: AppRoutes.account, page: () => AccountPage()),  
+    GetPage(name: AppRoutes.postNew, page: () => PostNewPage()),  
+    GetPage(name: AppRoutes.settingInfor, page: () => SettingInforPage()),  
   ],
       theme: ThemeData(
           primarySwatch: Colors.blue,

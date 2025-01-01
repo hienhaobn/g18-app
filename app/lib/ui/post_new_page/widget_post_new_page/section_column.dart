@@ -33,7 +33,7 @@ class SectionColumn extends StatelessWidget {
             ),
           ],
         ),
-        16.height ,
+        10.height ,
          child// Sử dụng SizedBox thay cho 16.height
            ],
     );

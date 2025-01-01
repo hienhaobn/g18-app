@@ -37,6 +37,7 @@ class BuildDropdownNhucau extends StatelessWidget {
             ),
             child: BuildDropDownV2<String>(
               hintText: 'Chọn nhu cầu đăng tin',
+              colorsIconDrop: AppColors.white,
               stylehint: AppStyles.titleStyleV2.copyWith(color: AppColors.white),
               currentValue: controller.selectedValue.value.isNotEmpty
                   ? controller.selectedValue.value

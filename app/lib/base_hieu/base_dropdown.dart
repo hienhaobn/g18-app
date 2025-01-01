@@ -59,6 +59,7 @@ class BuildDropDownV2<T> extends StatelessWidget {
   final double? itemHeight;
   final List<DropdownMenuItem<T>> childs;
   final TextStyle? stylehint;
+  final Color? colorsIconDrop;
   const BuildDropDownV2(
       {Key? key,
       this.isExpanded = true,
@@ -69,7 +70,8 @@ class BuildDropDownV2<T> extends StatelessWidget {
       this.currentValue,
       this.itemHeight,
       this.onChange,
-      this.stylehint})
+      this.stylehint,
+      this.colorsIconDrop})
       : super(key: key);
 
   @override
@@ -84,9 +86,9 @@ class BuildDropDownV2<T> extends StatelessWidget {
         style: stylehint ?? AppStyles.titleStyleV2,
       ),
       underline: Container(),
-      icon: const Icon(
+      icon: Icon(
         Icons.keyboard_arrow_down,
-        color: AppColors.p4C28A5,
+        color: colorsIconDrop ?? AppColors.p4C28A5,
       ),
       style: AppStyles.contentStyleV2,
       dropdownColor: Colors.white,

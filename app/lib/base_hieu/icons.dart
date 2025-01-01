@@ -20,4 +20,12 @@ class IconPath {
   static const String ic_required_ware_house = '$icon_path/ic_required_warehouse.svg';
   static const String ic_my_ware_house = '$icon_path/ic_my_warehouse.svg';
   static const String ic_phanyeucau = '$icon_path/ic_phanyeucau.svg';
+  static const String ic_setting = '$icon_path/ic_setting_account.svg';
+  static const String ic_community_extension = '$icon_path/ic_community_extension.svg';
+  static const String ic_introduce = '$icon_path/ic_introduce.svg';
+  static const String ic_rules = '$icon_path/ic_rules.svg';
+  static const String ic_policy = '$icon_path/ic_policy.svg';
+  static const String ic_user_manual = '$icon_path/ic_user_manual.svg';
+  static const String ic_contact = '$icon_path/ic_contact.svg';
+  static const String ic_edit = '$icon_path/ic_edit.svg';
   }

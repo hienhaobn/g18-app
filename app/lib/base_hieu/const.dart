@@ -99,3 +99,15 @@ List<LabelModal> NHUCAUDANGTIN = [
   LabelModal(label: 'Cần bán BĐS', value: 'SELLING'),
   LabelModal(label: 'Cần cho thuê BĐS', value: 'RENTING'),
 ];
+
+//rank
+  Map<String, String> rankIcons = {
+    'Đá': 'assets/icons/rank_stone.png',
+    'Đồng': 'assets/icons/rank_bronze.png',
+    'Bạc': 'assets/icons/rank_silver.png',
+    'Vàng': 'assets/icons/rank_gold.png',
+    'Bạch Kim': 'assets/icons/rank_platinum.png',
+    'Kim Cương': 'assets/icons/rank_diamond.png',
+    'Thách đấu': 'assets/icons/rank_challenge.png',
+    'Cao thủ': 'assets/icons/rank_master.png',
+  };

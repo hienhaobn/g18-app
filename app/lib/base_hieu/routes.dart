@@ -7,4 +7,5 @@ class AppRoutes {
   static const sell = '/sell';
   static const account = '/account';
   static const postNew = '/postNew';
+  static const settingInfor = '/settingInfor';
   }
