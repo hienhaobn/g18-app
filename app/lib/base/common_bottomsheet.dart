@@ -1,5 +1,5 @@
-import 'package:app/base_hieu/bottom2button.dart';
-import 'package:app/base_hieu/styles.dart';
+import 'package:app/base/bottom2button.dart';
+import 'package:app/base/styles.dart';
 import 'package:app/main.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';

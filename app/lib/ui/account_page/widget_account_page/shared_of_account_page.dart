@@ -1,10 +1,10 @@
-import 'package:app/base_hieu/assets.dart';
-import 'package:app/base_hieu/base_dropdown.dart';
-import 'package:app/base_hieu/colors.dart';
-import 'package:app/base_hieu/flushbar.dart';
-import 'package:app/base_hieu/fonts.dart';
-import 'package:app/base_hieu/icons.dart';
-import 'package:app/base_hieu/spacing_extension.dart';
+import 'package:app/base/assets.dart';
+import 'package:app/base/base_dropdown.dart';
+import 'package:app/base/colors.dart';
+import 'package:app/base/flushbar.dart';
+import 'package:app/base/fonts.dart';
+import 'package:app/base/icons.dart';
+import 'package:app/base/spacing_extension.dart';
 import 'package:app/ui/account_page/account_page_controller.dart';
 import 'package:app/ui/account_page/widget_account_page/policy_screen.dart';
 import 'package:app/ui/account_page/widget_account_page/profile_screen.dart';

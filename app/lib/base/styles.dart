@@ -1,4 +1,4 @@
-import 'package:app/base_hieu/colors.dart';
+import 'package:app/base/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppStyles {

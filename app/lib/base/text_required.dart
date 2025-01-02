@@ -1,6 +1,6 @@
 
-import 'package:app/base_hieu/colors.dart';
-import 'package:app/base_hieu/font_controller.dart';
+import 'package:app/base/colors.dart';
+import 'package:app/base/font_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

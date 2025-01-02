@@ -1,11 +1,11 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:app/base_hieu/app_translations.dart';
-import 'package:app/base_hieu/color_controller.dart';
-import 'package:app/base_hieu/colors.dart';
-import 'package:app/base_hieu/font_controller.dart';
-import 'package:app/base_hieu/routes.dart';
-import 'package:app/base_hieu/theme_controller.dart';
+import 'package:app/base/app_translations.dart';
+import 'package:app/base/color_controller.dart';
+import 'package:app/base/colors.dart';
+import 'package:app/base/font_controller.dart';
+import 'package:app/base/routes.dart';
+import 'package:app/base/theme_controller.dart';
 import 'package:app/ui/account_page/account_page.dart';
 import 'package:app/ui/account_page/widget_account_page/setting_infor_page.dart';
 import 'package:app/ui/home/home_page.dart';

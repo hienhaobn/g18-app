@@ -1,5 +1,5 @@
-import 'package:app/base_hieu/spacing_extension.dart';
-import 'package:app/base_hieu/styles.dart';
+import 'package:app/base/spacing_extension.dart';
+import 'package:app/base/styles.dart';
 import 'package:flutter/material.dart';
 
 class SectionColumn extends StatelessWidget {

@@ -1,6 +1,6 @@
-import 'package:app/base_hieu/base_get_view.dart';
-import 'package:app/base_hieu/colors.dart';
-import 'package:app/base_hieu/styles.dart';
+import 'package:app/base/base_get_view.dart';
+import 'package:app/base/colors.dart';
+import 'package:app/base/styles.dart';
 import 'package:app/ui/post_new_page/post_new_page_controller.dart';
 import 'package:app/ui/post_new_page/widget_post_new_page/one_layout.dart';
 import 'package:app/ui/post_new_page/widget_post_new_page/two_layout.dart';

@@ -1,7 +1,7 @@
-import 'package:app/base_hieu/base_dropdown.dart';
-import 'package:app/base_hieu/const.dart';
-import 'package:app/base_hieu/styles.dart';
-import 'package:app/model_hieu/label_model.dart';
+import 'package:app/base/base_dropdown.dart';
+import 'package:app/base/const.dart';
+import 'package:app/base/styles.dart';
+import 'package:app/model/label_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

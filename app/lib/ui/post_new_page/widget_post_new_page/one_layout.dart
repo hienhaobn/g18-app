@@ -1,5 +1,5 @@
-import 'package:app/base_hieu/bottom_button.dart';
-import 'package:app/base_hieu/spacing_extension.dart';
+import 'package:app/base/bottom_button.dart';
+import 'package:app/base/spacing_extension.dart';
 import 'package:app/ui/post_new_page/post_new_page_controller.dart';
 import 'package:app/ui/post_new_page/widget_post_new_page/build_bropdown_type_bds.dart';
 import 'package:app/ui/post_new_page/widget_post_new_page/build_dropdown_nhaucau.dart';

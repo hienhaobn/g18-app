@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:app/base_hieu/config.dart';
-import 'package:app/base_hieu/const.dart';
+import 'package:app/base/config.dart';
+import 'package:app/base/const.dart';
 import 'package:app/main.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';

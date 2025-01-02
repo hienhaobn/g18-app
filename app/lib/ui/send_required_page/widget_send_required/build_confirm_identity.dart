@@ -1,7 +1,7 @@
-import 'package:app/base_hieu/colors.dart';
-import 'package:app/base_hieu/const.dart';
-import 'package:app/base_hieu/styles.dart';
-import 'package:app/base_hieu/text_required.dart';
+import 'package:app/base/colors.dart';
+import 'package:app/base/const.dart';
+import 'package:app/base/styles.dart';
+import 'package:app/base/text_required.dart';
 import 'package:app/ui/send_required_page/send_required_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,7 +1,7 @@
-import 'package:app/base_hieu/color_controller.dart';
-import 'package:app/base_hieu/data_demo.dart';
-import 'package:app/base_hieu/font_controller.dart';
-import 'package:app/base_hieu/theme_controller.dart';
+import 'package:app/base/color_controller.dart';
+import 'package:app/base/data_demo.dart';
+import 'package:app/base/font_controller.dart';
+import 'package:app/base/theme_controller.dart';
 import 'package:app/main.dart';
 
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:app/base_hieu/data_demo.dart';
+import 'package:app/base/data_demo.dart';
 
 final List<CodeName> typeBDS = [
   CodeName("APARTMENT", 'Căn hộ'),

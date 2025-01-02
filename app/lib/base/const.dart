@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:app/model_hieu/label_model.dart';
+import 'package:app/model/label_model.dart';
 
 
 const DX_DEFAULT_VALUE = 20.0;

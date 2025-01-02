@@ -1,7 +1,7 @@
-import 'package:app/base_hieu/base_getx_controller.dart';
-import 'package:app/base_hieu/const.dart';
-import 'package:app/base_hieu/font_controller.dart';
-import 'package:app/model_hieu/label_model.dart';
+import 'package:app/base/base_getx_controller.dart';
+import 'package:app/base/const.dart';
+import 'package:app/base/font_controller.dart';
+import 'package:app/model/label_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';

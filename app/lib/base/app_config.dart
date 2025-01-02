@@ -1,5 +1,5 @@
 
-import 'package:app/base_hieu/urls.dart';
+import 'package:app/base/urls.dart';
 
 enum Flavor { DEV, STAGING, PRODUCTION }
 

@@ -1,7 +1,7 @@
 
-import 'package:app/base_hieu/colors.dart';
-import 'package:app/base_hieu/ratio_screen.dart';
-import 'package:app/base_hieu/styles.dart';
+import 'package:app/base/colors.dart';
+import 'package:app/base/ratio_screen.dart';
+import 'package:app/base/styles.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 

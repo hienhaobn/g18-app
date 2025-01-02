@@ -1,8 +1,8 @@
 
-import 'package:app/base_hieu/assets.dart';
-import 'package:app/base_hieu/colors.dart';
-import 'package:app/base_hieu/icons.dart';
-import 'package:app/base_hieu/styles.dart';
+import 'package:app/base/assets.dart';
+import 'package:app/base/colors.dart';
+import 'package:app/base/icons.dart';
+import 'package:app/base/styles.dart';
 import 'package:flutter/material.dart';
 
 class BottomButton extends StatelessWidget {

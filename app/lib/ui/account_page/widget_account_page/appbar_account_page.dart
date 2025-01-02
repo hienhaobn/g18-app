@@ -1,8 +1,8 @@
-import 'package:app/base_hieu/assets.dart';
-import 'package:app/base_hieu/colors.dart';
-import 'package:app/base_hieu/const.dart';
-import 'package:app/base_hieu/images.dart';
-import 'package:app/base_hieu/spacing_extension.dart';
+import 'package:app/base/assets.dart';
+import 'package:app/base/colors.dart';
+import 'package:app/base/const.dart';
+import 'package:app/base/images.dart';
+import 'package:app/base/spacing_extension.dart';
 import 'package:app/ui/account_page/account_page_controller.dart';
 import 'package:app/ui/account_page/widget_account_page/setting_infor_page.dart';
 import 'package:flutter/material.dart';

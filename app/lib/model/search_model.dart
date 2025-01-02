@@ -1,4 +1,4 @@
-import 'package:app/model_hieu/label_model.dart';
+import 'package:app/model/label_model.dart';
 import 'package:flutter/material.dart';
 
 

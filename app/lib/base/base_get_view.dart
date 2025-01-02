@@ -1,8 +1,8 @@
 
-import 'package:app/base_hieu/base_getx_controller.dart';
-import 'package:app/base_hieu/base_loading.dart';
-import 'package:app/base_hieu/colors.dart';
-import 'package:app/base_hieu/const.dart';
+import 'package:app/base/base_getx_controller.dart';
+import 'package:app/base/base_loading.dart';
+import 'package:app/base/colors.dart';
+import 'package:app/base/const.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 

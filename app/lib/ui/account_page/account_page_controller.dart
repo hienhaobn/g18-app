@@ -1,5 +1,5 @@
-import 'package:app/base_hieu/base_getx_controller.dart';
-import 'package:app/base_hieu/font_controller.dart';
+import 'package:app/base/base_getx_controller.dart';
+import 'package:app/base/font_controller.dart';
 import 'package:get/get.dart';
 
 class AccountPageController extends BaseGetXController {

@@ -1,6 +1,6 @@
-import 'package:app/base_hieu/base_get_view.dart';
-import 'package:app/base_hieu/colors.dart';
-import 'package:app/base_hieu/spacing_extension.dart';
+import 'package:app/base/base_get_view.dart';
+import 'package:app/base/colors.dart';
+import 'package:app/base/spacing_extension.dart';
 import 'package:app/ui/account_page/account_page_controller.dart';
 import 'package:app/ui/account_page/widget_account_page/appbar_account_page.dart';
 import 'package:app/ui/account_page/widget_account_page/manager_of_account_page.dart';
