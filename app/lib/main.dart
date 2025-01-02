@@ -19,6 +19,11 @@ import 'dart:math' as math;
 import 'package:get_storage/get_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:logger/logger.dart';
+import 'package:app/config/firebase_config.dart';
+import 'package:flutter/foundation.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'dart:io';
 
 late SharedPreferences prefs;
 double? ratioHeight;
@@ -28,13 +33,26 @@ Locale? localeL;
 final logger = Logger();
 int totalCurrentBtnShow = 0;
 
-void main() async{
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print("Handling a background message: ${message.messageId}");
+}
+
+void main() async {
   // Đảm bảo nạp các file JSON trước khi chạy ứng dụng
   WidgetsFlutterBinding.ensureInitialized();
-   prefs = await SharedPreferences.getInstance();
+  prefs = await SharedPreferences.getInstance();
+  await Firebase.initializeApp();
+  if (Platform.isIOS) {
+    final apnsToken = await FirebaseMessaging.instance.getAPNSToken();
+    print("APNS Token: $apnsToken"); // Kiểm tra token có được sinh ra không
+  }
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
   await loadTranslations();
   await GetStorage.init();
-    Get.put(ThemeController());
+  Get.put(ThemeController());
   Get.put(FontController());
   Get.put(ColorController());
   runApp(const MyApp());
@@ -43,8 +61,9 @@ void main() async{
 Future<void> loadTranslations() async {
   // Lấy các bản dịch từ lớp AppTranslations
   AppTranslations appTranslations = AppTranslations();
-  Map<String, Map<String, String>> translations = await appTranslations.loadTranslations();
-  
+  Map<String, Map<String, String>> translations =
+      await appTranslations.loadTranslations();
+
   // Cập nhật bản dịch vào GetX
   Get.addTranslations(translations);
 }
@@ -52,17 +71,14 @@ Future<void> loadTranslations() async {
 class MyApp extends StatefulWidget {
   const MyApp({super.key, this.locale});
 
-    final Locale? locale;
+  final Locale? locale;
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-
-
-
-    Future<void> handleRatioScreen() async {
+  Future<void> handleRatioScreen() async {
     var size = Get.size;
     ratioWidth = size.width / 137;
     ratioHeight = size.height / 393;
@@ -73,57 +89,74 @@ class _MyAppState extends State<MyApp> {
       scaleFontsize = 0.85;
     }
   }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    FirebaseConfig _firebaseConfig = FirebaseConfig();
+
+    _firebaseConfig.requestNotificationPermission();
+    _firebaseConfig.foregroundMessage();
+    _firebaseConfig.firebaseInit(context);
+    _firebaseConfig.setupInteractMessage(context);
+    _firebaseConfig.isTokenRefresh();
+
+    _firebaseConfig.getDeviceToken().then((value) {
+      if (kDebugMode) {
+        print('device token');
+        print(value);
+      }
+    }).catchError((error) {
+      if (kDebugMode) {
+        print('error: $error');
+      }
+    });
+
     return GetMaterialApp(
-       translations: AppTranslations(),
+      translations: AppTranslations(),
       locale: Locale('vi', 'VN'), // Ngôn ngữ mặc định
       fallbackLocale: Locale('en', 'US'),
       title: 'Airdata',
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.rightToLeftWithFade,
       transitionDuration: const Duration(milliseconds: 200),
-     
+
       // initialRoute: AppRoutes.splash,
       initialRoute: AppRoutes.home,
       routingCallback: (value) async {
         if (value?.current == AppRoutes.splash) {
           await handleRatioScreen();
-         
         }
       },
-     getPages: [
-    // Add your page routes here
-    GetPage(name: AppRoutes.home, page: () => HomePage(),
-    children: [
-      GetPage(
-        name: AppRoutes.sendRequire,
-        page: () => SendRequirePage(),
-        // arguments: (args) => SendRequirePage.fromArgs(args), // nếu cần
-      ),
-      GetPage(
-        name: AppRoutes.lease,
-        page: () => LeasePage(),
-        // arguments: (args) => SearchModel.fromArgs(args), // nếu cần
-      ),
-        GetPage(
-        name: AppRoutes.postNew,
-        page: () => PostNewPage(),
-      ),
-      GetPage(
-        name: AppRoutes.account,
-        page: () => AccountPage(),
-      ),
-    ]
-    ),
-    GetPage(name: AppRoutes.sendRequire, page: () => SendRequirePage()),  
-    GetPage(name: AppRoutes.lease, page: () => LeasePage()), 
-    GetPage(name: AppRoutes.sell, page: () => SellPage()),  
-    GetPage(name: AppRoutes.account, page: () => AccountPage()),  
-    GetPage(name: AppRoutes.postNew, page: () => PostNewPage()),  
-    GetPage(name: AppRoutes.settingInfor, page: () => SettingInforPage()),  
-  ],
+      getPages: [
+        // Add your page routes here
+        GetPage(name: AppRoutes.home, page: () => HomePage(), children: [
+          GetPage(
+            name: AppRoutes.sendRequire,
+            page: () => SendRequirePage(),
+            // arguments: (args) => SendRequirePage.fromArgs(args), // nếu cần
+          ),
+          GetPage(
+            name: AppRoutes.lease,
+            page: () => LeasePage(),
+            // arguments: (args) => SearchModel.fromArgs(args), // nếu cần
+          ),
+          GetPage(
+            name: AppRoutes.postNew,
+            page: () => PostNewPage(),
+          ),
+          GetPage(
+            name: AppRoutes.account,
+            page: () => AccountPage(),
+          ),
+        ]),
+        GetPage(name: AppRoutes.sendRequire, page: () => SendRequirePage()),
+        GetPage(name: AppRoutes.lease, page: () => LeasePage()),
+        GetPage(name: AppRoutes.sell, page: () => SellPage()),
+        GetPage(name: AppRoutes.account, page: () => AccountPage()),
+        GetPage(name: AppRoutes.postNew, page: () => PostNewPage()),
+        GetPage(name: AppRoutes.settingInfor, page: () => SettingInforPage()),
+      ],
       theme: ThemeData(
           primarySwatch: Colors.blue,
           tabBarTheme: TabBarTheme(indicatorColor: AppColors.border),
@@ -140,7 +173,7 @@ class _MyAppState extends State<MyApp> {
           fontFamily: "Lato-Medium"),
       builder: (context, child) {
         final MediaQueryData data = MediaQuery.of(context);
-        // return 
+        // return
         //  FloatingNotificationWidget(
         //   child: MediaQuery(
         //     data: data.copyWith(textScaler: TextScaler.linear(1)),
@@ -155,7 +188,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
-
-
-

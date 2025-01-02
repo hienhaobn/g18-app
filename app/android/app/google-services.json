@@ -1,0 +1,226 @@
+{
+  "project_info": {
+    "project_number": "786405965328",
+    "project_id": "g18mobile",
+    "storage_bucket": "g18mobile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786405965328:android:d946153b2ac381f879d495",
+        "android_client_info": {
+          "package_name": "com.g18.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786405965328-0j9p8atn49sl4165s00nur9vdtitqi1m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.g18.app",
+            "certificate_hash": "cf34842f2b5de01007c7fd52310724aae15844d6"
+          }
+        },
+        {
+          "client_id": "786405965328-t5g9pg6b8i2qcidnp457d0ghehtteb92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPqskA5cyo-PY9iBuYoB2q2bfx3To9eZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786405965328-si8i0gisk27udrud6aiqraeu9fe6l2ce.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "786405965328-2agasmo4kr1n70tiia3vh2snbkn0dfqc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.g18.chotbds"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786405965328:android:83af38bbe49172f879d495",
+        "android_client_info": {
+          "package_name": "com.g18.appchotbds"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786405965328-mrbrr4lb37s57bcocvgc21dd59rmvgf2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.g18.appchotbds",
+            "certificate_hash": "a869e442528d0daf8525bc743a0fba0957725723"
+          }
+        },
+        {
+          "client_id": "786405965328-r2pon1f4bgc77ulb1du6cot8d9cqh3ri.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.g18.appchotbds",
+            "certificate_hash": "de700fc91fed98940a80dd4e12dec80d22db73a2"
+          }
+        },
+        {
+          "client_id": "786405965328-utcu9mg729bpa24nftidmaqjpht5sn4m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.g18.appchotbds",
+            "certificate_hash": "cf34842f2b5de01007c7fd52310724aae15844d6"
+          }
+        },
+        {
+          "client_id": "786405965328-t5g9pg6b8i2qcidnp457d0ghehtteb92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPqskA5cyo-PY9iBuYoB2q2bfx3To9eZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786405965328-si8i0gisk27udrud6aiqraeu9fe6l2ce.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "786405965328-2agasmo4kr1n70tiia3vh2snbkn0dfqc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.g18.chotbds"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786405965328:android:018ddf37429d188479d495",
+        "android_client_info": {
+          "package_name": "com.g18.chotbds"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786405965328-17i77lcm11knmt93eg279iunmaf2vi4r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.g18.chotbds",
+            "certificate_hash": "de700fc91fed98940a80dd4e12dec80d22db73a2"
+          }
+        },
+        {
+          "client_id": "786405965328-t5g9pg6b8i2qcidnp457d0ghehtteb92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPqskA5cyo-PY9iBuYoB2q2bfx3To9eZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786405965328-si8i0gisk27udrud6aiqraeu9fe6l2ce.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "786405965328-2agasmo4kr1n70tiia3vh2snbkn0dfqc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.g18.chotbds"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786405965328:android:03abdddef24b05d479d495",
+        "android_client_info": {
+          "package_name": "com.g18mobile.beit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786405965328-d9ea3dgkse83o8hfc096f4o1f3sfu34e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.g18mobile.beit",
+            "certificate_hash": "a7c2461e36a5849be1df9775d2f18b07eb3023ed"
+          }
+        },
+        {
+          "client_id": "786405965328-dlpikbhimar3hk9t6jnvn265qfhnv2v6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.g18mobile.beit",
+            "certificate_hash": "c8f4fb28d08a8ed8cb54f554bd5baa4be141b795"
+          }
+        },
+        {
+          "client_id": "786405965328-mvh4ftrjbrkcqbgfaksqp5f3vjb979cf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.g18mobile.beit",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "786405965328-tqfb231nq39b7bvev1s3eonu7v9s4788.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.g18mobile.beit",
+            "certificate_hash": "cc21ce65846adc1ef138b4aee6843ab7063b7e03"
+          }
+        },
+        {
+          "client_id": "786405965328-t5g9pg6b8i2qcidnp457d0ghehtteb92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPqskA5cyo-PY9iBuYoB2q2bfx3To9eZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786405965328-si8i0gisk27udrud6aiqraeu9fe6l2ce.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "786405965328-2agasmo4kr1n70tiia3vh2snbkn0dfqc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.g18.chotbds"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
