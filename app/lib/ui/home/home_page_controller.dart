@@ -4,15 +4,14 @@ import 'package:app/base_hieu/base_getx_controller.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-// import 'package:app/base_hieu/handle_error.dart';
 
 class HomePageController extends BaseGetXController {
   late PersistentTabController tabController;
   RxInt selectedIndex = (-1).obs; // Khởi đầu với không tab nào được chọn.
 //
-final refreshController = RefreshController();
-RxList<String> banerImage = <String>[].obs;
-RxInt indexBanner = 0.obs;
+  final refreshController = RefreshController();
+  RxList<String> banerImage = <String>[].obs;
+  RxInt indexBanner = 0.obs;
 
   @override
   void onInit() {
@@ -25,5 +24,4 @@ RxInt indexBanner = 0.obs;
       'https://cdn.leonardo.ai/users/a3dd2cf3-9ff3-44c2-b81c-48d8e6fa9dc4/generations/3112fdb3-375d-47de-98a2-15a34b832b5a/Leonardo_Anime_XL_In_a_semireal_anime_style_in_the_heart_of_a_3.jpg?w=512',
     ];
   }
-
 }
