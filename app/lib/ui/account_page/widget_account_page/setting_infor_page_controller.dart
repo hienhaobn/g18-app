@@ -14,6 +14,10 @@ class SettingInforPageController extends BaseGetXController {
   final emailController = TextEditingController();
   final phoneNumberController = TextEditingController();
   final birthdayController = TextEditingController();
+  //Gia hạn gói tin
+  final RxString selectedValueRenewal = '1'.obs;
+  final RxInt priceValue = 500000.obs;
+
 
 
   @override

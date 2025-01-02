@@ -170,30 +170,30 @@ class HomePage extends BaseGetWidget<HomePageController> {
                   //   height: 20,
                   // ),
                   // _projectListWidget(itemWidth, projectItemHeight),
-                  SearchDropdown<String>(
-              hintText: 'Search for a name',
-              controller: _controller,
-              focusNode: _focusNode,
-              itemBuilder: (context, suggestion) {
-                return ListTile(
-                  title: Text(suggestion),
-                );
-              },
-              suggestions: (pattern) async {
-                // Lọc danh sách tên dựa trên văn bản nhập vào
-                return _names
-                    .where((name) => name.toLowerCase().contains(pattern.toLowerCase()))
-                    .toList();
-              },
-              onTapSuggestion: (suggestion) {
-                // Làm gì đó khi người dùng chọn một tên
-                print('Selected: $suggestion');
-              },
-              onClearCreated: () {
-                // Làm gì đó khi người dùng xóa văn bản
-                print('Search cleared');
-              },
-            ),
+            //       SearchDropdown<String>(
+            //   hintText: 'Search for a name',
+            //   controller: _controller,
+            //   focusNode: _focusNode,
+            //   itemBuilder: (context, suggestion) {
+            //     return ListTile(
+            //       title: Text(suggestion),
+            //     );
+            //   },
+            //   suggestions: (pattern) async {
+            //     // Lọc danh sách tên dựa trên văn bản nhập vào
+            //     return _names
+            //         .where((name) => name.toLowerCase().contains(pattern.toLowerCase()))
+            //         .toList();
+            //   },
+            //   onTapSuggestion: (suggestion) {
+            //     // Làm gì đó khi người dùng chọn một tên
+            //     print('Selected: $suggestion');
+            //   },
+            //   onClearCreated: () {
+            //     // Làm gì đó khi người dùng xóa văn bản
+            //     print('Search cleared');
+            //   },
+            // ),
                   SizedBox(
                     height: 20,
                   ),

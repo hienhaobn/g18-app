@@ -2,6 +2,8 @@ import 'package:app/base_hieu/assets.dart';
 import 'package:app/base_hieu/icons.dart';
 import 'package:app/base_hieu/spacing_extension.dart';
 import 'package:app/ui/account_page/account_page_controller.dart';
+import 'package:app/ui/account_page/widget_account_page/community_renewal.dart';
+import 'package:app/ui/account_page/widget_account_page/floor_management.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,13 +14,14 @@ class ManagerOfAccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      ()=> Row(
+      () => Row(
         children: [
           // if (checkPermissionCEODIRECTOR() == true)
           Expanded(
             child: GestureDetector(
               onTap: () {
                 // quanlysan();
+                Get.to(()=>FloorManagement());
               },
               child: Container(
                 padding:
@@ -45,10 +48,7 @@ class ManagerOfAccountPage extends StatelessWidget {
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xFF333333)) // primaryTextStyle(
-                        //   size: 16,
-                        //   color: Color(0xFF333333),
-                        //   weight: FontWeight.w600,
-                        // ),
+
                         ),
                   ],
                 ),
@@ -61,6 +61,7 @@ class ManagerOfAccountPage extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 // giahantincongodng();
+                Get.to(() => CommunityRenewal());
               },
               child: Container(
                 padding:
@@ -79,7 +80,7 @@ class ManagerOfAccountPage extends StatelessWidget {
                   children: [
                     // Assets.icons.icCommunityExtension.svg(width: 38, height: 38),
                     AppAssets.svgIcon(IconPath.ic_community_extension),
-      
+
                     8.height,
                     Text('Gia hạn cộng đồng',
                         maxLines: 1,
@@ -94,7 +95,7 @@ class ManagerOfAccountPage extends StatelessWidget {
                         //   color: Color(0xFF333333),
                         //   weight: FontWeight.w600,
                         // ),
-      
+
                         ),
                   ],
                 ),

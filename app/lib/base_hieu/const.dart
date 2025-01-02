@@ -111,3 +111,12 @@ List<LabelModal> NHUCAUDANGTIN = [
     'Thách đấu': 'assets/icons/rank_challenge.png',
     'Cao thủ': 'assets/icons/rank_master.png',
   };
+
+  //chọn gói gia hạn
+  final List<LabelModal> DataRenewal = [
+    LabelModal(value: "1", label: "Gói 1 tháng"),
+    LabelModal(value: "3", label: "Gói 3 tháng"),
+    LabelModal(value: "6", label: "Gói 6 tháng"),
+    LabelModal(value: "9", label: "Gói 9 tháng"),
+    LabelModal(value: "12", label: "Gói 1 năm")
+  ];
