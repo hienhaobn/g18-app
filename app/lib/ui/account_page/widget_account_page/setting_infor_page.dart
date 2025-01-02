@@ -1,5 +1,13 @@
 import 'package:app/base_hieu/base_get_view.dart';
+import 'package:app/base_hieu/bottom2button.dart';
+import 'package:app/base_hieu/colors.dart';
+import 'package:app/base_hieu/common_bottomsheet.dart';
+import 'package:app/base_hieu/flushbar.dart';
+import 'package:app/base_hieu/input_text.dart';
 import 'package:app/base_hieu/spacing_extension.dart';
+import 'package:app/base_hieu/text_required.dart';
+import 'package:app/base_hieu/title_close_widget.dart';
+import 'package:app/ui/account_page/widget_account_page/change_password_page.dart';
 import 'package:app/ui/account_page/widget_account_page/setting_infor_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -77,8 +85,71 @@ class SettingInforPage extends BaseGetWidget<SettingInforPageController> {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     // PersonalInfoScreen(),
+                    showCommonBottomSheet(
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TitleCloseWidget(title: 'Chỉnh sửa thông tin'),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  TextNoneRequired(
+                                    text: "Họ và tên",
+                                  ),
+                                  InputText(
+                                    hintText: 'Họ và tên',
+                                    controller: controller.fullNameController,
+                                  ),
+                                  //
+                                  10.height,
+                                  TextNoneRequired(
+                                    text: "Email",
+                                  ),
+                                  InputText(
+                                    hintText: 'Email',
+                                    controller: controller.emailController,
+                                  ),
+                                  //
+                                  10.height,
+                                  TextNoneRequired(
+                                    text: "Điện thoại",
+                                  ),
+                                  InputText(
+                                    hintText: 'Điện thoại',
+                                    controller:
+                                        controller.phoneNumberController,
+                                  ),
+                                  //
+                                  10.height,
+                                  TextNoneRequired(
+                                    text: "Ngày sinh (dd/MM/yyyy)",
+                                  ),
+                                  InputText(
+                                    hintText: 'Ngày sinh',
+                                    controller: controller.birthdayController,
+                                  ),
+                                  15.height,
+                                  Bottom2button(
+                                      color1Button: AppColors.border,
+                                      title1: 'Hủy',
+                                      color2Button: AppColors.p4C28A5,
+                                      onTap2: () {
+                                        //
+                                        print(
+                                            'button Lưu của Chỉnh sửa thông tin');
+                                      })
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                        isScrollControlled: true,
+                        backgroundColor: AppColors.white);
                   },
                   child: Card(
                     elevation: 4,
@@ -90,7 +161,8 @@ class SettingInforPage extends BaseGetWidget<SettingInforPageController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _buildInfoRow('Mã nhân viên', controller.userId.value),
+                          _buildInfoRow(
+                              'Mã nhân viên', controller.userId.value),
                           _buildInfoRow(
                               'Họ và tên', controller.fullNameUser.value),
                           _buildInfoRow('Ngày sinh', '01/01/2025'
@@ -99,7 +171,8 @@ class SettingInforPage extends BaseGetWidget<SettingInforPageController> {
                           _buildInfoRow('Số CCCD/HC', 'xxxxxxxxx'),
                           // _buildInfoRow('Loại giấy tờ', 'CCCD'),
                           // _buildInfoRow('Số CCCD/HC', '013658555931'),
-                          _buildInfoRow('Email', controller.userDataEmail.value),
+                          _buildInfoRow(
+                              'Email', controller.userDataEmail.value),
                         ],
                       ),
                     ),
@@ -111,6 +184,7 @@ class SettingInforPage extends BaseGetWidget<SettingInforPageController> {
                 'Đổi mật khẩu',
                 () {
                   // AppRouter.router.push(NameRouter.ChangePasswordScreen.path);
+                  Get.to(() => ChangePasswordPage());
                 },
               ),
               // _buildSettingItem(Icons.privacy_tip, 'Bảo mật và quyền riêng tư',() {
@@ -121,6 +195,9 @@ class SettingInforPage extends BaseGetWidget<SettingInforPageController> {
                 'Nạp tiền',
                 () {
                   // ShowToastSuss("Đang phát triển");
+                  showFlushBar(
+                      content: 'Đang trong quá trình phát triển',
+                      backgroundColor: AppColors.active);
                 },
               ),
 
@@ -128,7 +205,7 @@ class SettingInforPage extends BaseGetWidget<SettingInforPageController> {
                 Icons.payment,
                 'Xóa tài khoản',
                 () {
-                  // remoteAccount(context);
+                  remoteAccount(context);
                 },
               ),
               Padding(
@@ -224,4 +301,71 @@ class SettingInforPage extends BaseGetWidget<SettingInforPageController> {
       onTap: callback, // Gọi callback khi nhấn vào item
     );
   }
+
+  Future<void> remoteAccount(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          contentPadding: EdgeInsets.zero,
+          content: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // 15.height ,
+                Text(
+                  "Xóa tài khoản",
+                  style: controller.fontController.currentFontStyle.copyWith(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  "Bạn có chắc chắn muốn xóa tài khoản không!",
+                  style: controller.fontController.currentFontStyle,
+                ),
+                const SizedBox(height: 28),
+                Bottom2button(
+                  title1: "Không",
+                  textColor1: AppColors.blackText,
+                  color1Button: AppColors.border,
+                  color2Button: Colors.cyan,
+                  title2: 'Đồng ý',
+                  onTap2: () async {
+                    // if (await isNetworkAvailable()) {
+                    //   appStore.setLoading(true);
+                    //   await deleteAccount(body: {});
+                    //   ShowToastSuss("Bạn đã xóa tài khoản");
+                    //   appStore.setLoading(false);
+                    //   Navigator.of(context).pop();
+                    //   AppRouter.clearStackAndNavigate(NameRouter.login.path);
+                    // } else {
+                    //   toast(errorInternetNotAvailable);
+                    // }
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 }
+
+
+//  onTap: () async {
+            //         if (await isNetworkAvailable()) {
+            //           appStore.setLoading(true);
+            //           await deleteAccount(body: {});
+            //           ShowToastSuss("Bạn đã xóa tài khỏan");
+            //           appStore.setLoading(false);
+            //           Navigator.of(context).pop();
+            //           AppRouter.clearStackAndNavigate(NameRouter.login.path);
+            //         } else {
+            //           // print("lỗi");
+            //           toast(errorInternetNotAvailable);
+            //         }
+            //       },

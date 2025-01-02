@@ -26,6 +26,7 @@ double? ratioWidth;
 late double scaleFontsize;
 Locale? localeL;
 final logger = Logger();
+int totalCurrentBtnShow = 0;
 
 void main() async{
   // Đảm bảo nạp các file JSON trước khi chạy ứng dụng

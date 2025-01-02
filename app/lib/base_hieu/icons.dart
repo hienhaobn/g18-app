@@ -28,4 +28,5 @@ class IconPath {
   static const String ic_user_manual = '$icon_path/ic_user_manual.svg';
   static const String ic_contact = '$icon_path/ic_contact.svg';
   static const String ic_edit = '$icon_path/ic_edit.svg';
+  static const String ic_delete = '$icon_path/ic_delete.svg';
   }
