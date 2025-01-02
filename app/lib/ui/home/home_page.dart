@@ -5,6 +5,7 @@ import 'package:app/base_hieu/base_get_view.dart';
 import 'package:app/base_hieu/colors.dart';
 import 'package:app/base_hieu/icons.dart';
 import 'package:app/base_hieu/images.dart';
+import 'package:app/base_hieu/search_dropdown.dart';
 import 'package:app/base_hieu/spacing_extension.dart';
 import 'package:app/base_hieu/styles.dart';
 import 'package:app/ui/home/home_page_controller.dart';
@@ -133,6 +134,10 @@ class HomePage extends BaseGetWidget<HomePageController> {
   }
   
   Widget child() => Builder(builder: (context) {
+    final List<String> _names = ['John', 'Jane', 'James', 'Jack', 'Jill', 'Joe'];
+     final TextEditingController _controller = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
+
       
         return Container(
           padding: EdgeInsets.only(bottom: 16),
@@ -165,6 +170,30 @@ class HomePage extends BaseGetWidget<HomePageController> {
                   //   height: 20,
                   // ),
                   // _projectListWidget(itemWidth, projectItemHeight),
+                  SearchDropdown<String>(
+              hintText: 'Search for a name',
+              controller: _controller,
+              focusNode: _focusNode,
+              itemBuilder: (context, suggestion) {
+                return ListTile(
+                  title: Text(suggestion),
+                );
+              },
+              suggestions: (pattern) async {
+                // Lọc danh sách tên dựa trên văn bản nhập vào
+                return _names
+                    .where((name) => name.toLowerCase().contains(pattern.toLowerCase()))
+                    .toList();
+              },
+              onTapSuggestion: (suggestion) {
+                // Làm gì đó khi người dùng chọn một tên
+                print('Selected: $suggestion');
+              },
+              onClearCreated: () {
+                // Làm gì đó khi người dùng xóa văn bản
+                print('Search cleared');
+              },
+            ),
                   SizedBox(
                     height: 20,
                   ),
