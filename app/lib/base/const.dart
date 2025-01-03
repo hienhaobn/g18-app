@@ -1,12 +1,13 @@
 import 'dart:math' as math;
 
 import 'package:app/model/label_model.dart';
-
+import 'package:flutter/material.dart';
 
 const DX_DEFAULT_VALUE = 20.0;
 const DY_DEFAULT_VALUE = 50.0;
-String WARNING_LOADING = 'Cảnh báo';//Tran.tr.unstable_connection_notice;
-
+String WARNING_LOADING = 'Cảnh báo'; //Tran.tr.unstable_connection_notice;
+const EMPTY_AVATAR =
+    'https://g18.s3.ap-southeast-1.amazonaws.com/1686626117645-adc441c740d89186c8c9.jpg';
 
 const airlineNames2 = {
   "APARTMENT": 'Căn hộ',
@@ -21,7 +22,6 @@ final lstAirline2 = [
   "GROUND",
   'REAL_ESTATE',
 ];
-
 
 //1
 List<LabelModal> APARTMENT_BDS = [
@@ -101,22 +101,47 @@ List<LabelModal> NHUCAUDANGTIN = [
 ];
 
 //rank
-  Map<String, String> rankIcons = {
-    'Đá': 'assets/icons/rank_stone.png',
-    'Đồng': 'assets/icons/rank_bronze.png',
-    'Bạc': 'assets/icons/rank_silver.png',
-    'Vàng': 'assets/icons/rank_gold.png',
-    'Bạch Kim': 'assets/icons/rank_platinum.png',
-    'Kim Cương': 'assets/icons/rank_diamond.png',
-    'Thách đấu': 'assets/icons/rank_challenge.png',
-    'Cao thủ': 'assets/icons/rank_master.png',
-  };
+Map<String, String> rankIcons = {
+  'Đá': 'assets/icons/rank_stone.png',
+  'Đồng': 'assets/icons/rank_bronze.png',
+  'Bạc': 'assets/icons/rank_silver.png',
+  'Vàng': 'assets/icons/rank_gold.png',
+  'Bạch Kim': 'assets/icons/rank_platinum.png',
+  'Kim Cương': 'assets/icons/rank_diamond.png',
+  'Thách đấu': 'assets/icons/rank_challenge.png',
+  'Cao thủ': 'assets/icons/rank_master.png',
+};
 
-  //chọn gói gia hạn
-  final List<LabelModal> DataRenewal = [
-    LabelModal(value: "1", label: "Gói 1 tháng"),
-    LabelModal(value: "3", label: "Gói 3 tháng"),
-    LabelModal(value: "6", label: "Gói 6 tháng"),
-    LabelModal(value: "9", label: "Gói 9 tháng"),
-    LabelModal(value: "12", label: "Gói 1 năm")
-  ];
+//chọn gói gia hạn
+final List<LabelModal> DataRenewal = [
+  LabelModal(value: "1", label: "Gói 1 tháng"),
+  LabelModal(value: "3", label: "Gói 3 tháng"),
+  LabelModal(value: "6", label: "Gói 6 tháng"),
+  LabelModal(value: "9", label: "Gói 9 tháng"),
+  LabelModal(value: "12", label: "Gói 1 năm")
+];
+
+//list trạng thái tin
+List<LabelModal> ListOfNewStatus = [
+  LabelModal(value: '1', label: 'Đã xử lý', color: Color(0xFFFF0000)),
+  LabelModal(value: '0', label: 'Chưa xử lý', color: Color(0xFF0AAE84)),
+];
+
+//
+List<LabelModal> viewSHOWLABLE = [
+  LabelModal(label: 'Bán', value: 'SELLING', color: Colors.red),
+  LabelModal(label: 'Thuê', value: 'RENTING', color: Colors.green),
+  LabelModal(label: 'Tìm mua ', value: 'BUYING', color: Colors.black),
+  LabelModal(label: 'Tìm thuê ', value: 'NEED_RENTING', color: Colors.green),
+  LabelModal(label: 'Dự án', value: 'PROJECT', color: Colors.black),
+];
+//
+List<LabelModal> VIEWSTATUS = [
+  LabelModal(
+      value: 'new', label: 'Mới', color: Color.fromARGB(255, 49, 138, 52)),
+  LabelModal(value: 'CLOSED', label: 'Tạm dừng', color: Color(0xFFFFD910)),
+  LabelModal(value: 'REQUEST', label: 'Hoàn hảo', color: Color(0xFFFF7E25)),
+  LabelModal(value: 'STOP_REQUEST', label: 'Đã chốt', color: Color(0xFFFF0000)),
+  LabelModal(value: 'AVAILABLE', label: 'Phương án', color: Color(0xFF0AAE84)),
+  LabelModal(value: 'CLOSE_REQUEST', label: 'Loại', color: Color(0xFF000000)),
+];

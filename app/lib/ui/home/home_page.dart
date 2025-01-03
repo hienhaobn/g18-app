@@ -8,6 +8,7 @@ import 'package:app/base/images.dart';
 import 'package:app/base/search_dropdown.dart';
 import 'package:app/base/spacing_extension.dart';
 import 'package:app/base/styles.dart';
+import 'package:app/ui/community/card_community.dart';
 import 'package:app/ui/home/home_page_controller.dart';
 import 'package:app/ui/home/widget_home/carousel_slide_home_page.dart';
 import 'package:app/ui/home/widget_home/util_item_widget.dart';
@@ -37,27 +38,27 @@ class HomePage extends BaseGetWidget<HomePageController> {
         () => Scaffold(
             body: controller.selectedIndex.value == -1
                 ? Column(
-                  children: [
-                    _build_homePage_AppBar(context),
-                    Expanded(
-                      child: SmartRefresher(
-                                  controller: controller.refreshController,
-                                  enablePullDown: true,
-                                  enablePullUp: false,
-                                  onRefresh: () async {
-                                    // await GetListProductREN();
-                                    // await GetListProductSell();
-                                    // await GetListProjectt();
-                                    // await GetListCommunity();
-                                    controller. refreshController.refreshCompleted();
-                                  },
-                                  child: SingleChildScrollView(
-                                    child: child(),
-                                  ),
-                                ),
-                    )
-                  ],
-                ) // Nội dung mặc định
+                    children: [
+                      _build_homePage_AppBar(context),
+                      Expanded(
+                        child: SmartRefresher(
+                          controller: controller.refreshController,
+                          enablePullDown: true,
+                          enablePullUp: false,
+                          onRefresh: () async {
+                            // await GetListProductREN();
+                            // await GetListProductSell();
+                            // await GetListProjectt();
+                            // await GetListCommunity();
+                            controller.refreshController.refreshCompleted();
+                          },
+                          child: SingleChildScrollView(
+                            child: child(),
+                          ),
+                        ),
+                      )
+                    ],
+                  ) // Nội dung mặc định
                 : _buildScreens[controller.selectedIndex.value]),
       ),
     );
@@ -65,80 +66,86 @@ class HomePage extends BaseGetWidget<HomePageController> {
 
   Widget _build_homePage_AppBar(BuildContext context) {
     return Stack(
-  children: [
-    Container(
-      child: AppAssets.pngImage(ImagePath.img_bg_appbar),
-    ),
-    Positioned(
-      top: 65,
-      left: 16,
-      right: 16, 
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween, // Căn giữa các phần tử 2 bên
-        children: [
-          // Phần bên trái
-          Row(
+      children: [
+        Container(
+          child: AppAssets.pngImage(ImagePath.img_bg_appbar),
+        ),
+        Positioned(
+          top: 65,
+          left: 16,
+          right: 16,
+          child: Row(
+            mainAxisAlignment:
+                MainAxisAlignment.spaceBetween, // Căn giữa các phần tử 2 bên
             children: [
-              InkWell(
-                onTap: () {},
-                child: CircleAvatar(
-                  radius: 20,
-                ),
-              ),
-              8.width,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              // Phần bên trái
+              Row(
                 children: [
-                  Text(
-                    'Xin chào',
-                    style: AppStyles.textW400(context,
-                        size: 16, color: AppColors.white),
+                  InkWell(
+                    onTap: () {},
+                    child: CircleAvatar(
+                      radius: 20,
+                    ),
                   ),
-                  Text(
-                    'Mai Quốc Đạt',
-                    style: AppStyles.textW700(context,
-                        size: 18, color: AppColors.white),
-                  )
+                  8.width,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Xin chào',
+                        style: AppStyles.textW400(context,
+                            size: 16, color: AppColors.white),
+                      ),
+                      Text(
+                        'Mai Quốc Đạt',
+                        style: AppStyles.textW700(context,
+                            size: 18, color: AppColors.white),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              // Phần bên phải
+              Row(
+                children: [
+                  InkWell(
+                    onTap: () {},
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.white,
+                      radius: 20,
+                      child: AppAssets.svgIcon(IconPath.ic_search),
+                    ),
+                  ),
+                  11.width,
+                  InkWell(
+                    onTap: () {},
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.white,
+                      radius: 20,
+                      child: AppAssets.svgIcon(IconPath.ic_notifi),
+                    ),
+                  ),
                 ],
               ),
             ],
           ),
-          // Phần bên phải
-          Row(
-            children: [
-              InkWell(
-                onTap: () {},
-                child: CircleAvatar(
-                  backgroundColor: AppColors.white,
-                  radius: 20,
-                  child: AppAssets.svgIcon(IconPath.ic_search),
-                ),
-              ),
-              11.width,
-              InkWell(
-                onTap: () {},
-                child: CircleAvatar(
-                  backgroundColor: AppColors.white,
-                  radius: 20,
-                  child: AppAssets.svgIcon(IconPath.ic_notifi),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    ),
-  ],
-)
-;
+        ),
+      ],
+    );
   }
-  
-  Widget child() => Builder(builder: (context) {
-    final List<String> _names = ['John', 'Jane', 'James', 'Jack', 'Jill', 'Joe'];
-     final TextEditingController _controller = TextEditingController();
-  final FocusNode _focusNode = FocusNode();
 
-      
+  Widget child() => Builder(builder: (context) {
+        // final List<String> _names = [
+        //   'John',
+        //   'Jane',
+        //   'James',
+        //   'Jack',
+        //   'Jill',
+        //   'Joe'
+        // ];
+        // final TextEditingController _controller = TextEditingController();
+        // final FocusNode _focusNode = FocusNode();
+
         return Container(
           padding: EdgeInsets.only(bottom: 16),
           color: Colors.white,
@@ -154,13 +161,69 @@ class HomePage extends BaseGetWidget<HomePageController> {
                     listBanner: controller.banerImage,
                     index: controller.indexBanner.value,
                   ),
-                 12.height,
+                  12.height,
+                  //tiện ích
                   _utilWidget(context),
-                   12.height,
-                  // _communityListWidget(itemWidth, itemHeight),
-                  // SizedBox(
-                  //   height: 20,
-                  // ),
+                  12.height,
+                  // _communityListWidget(),
+                  //cộng đồng
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          print('Tất cả cộng đồng');
+                        },
+                        child: Container(
+                          color: Colors.transparent,
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Cộng đồng",
+                                  textAlign: TextAlign.start,
+                                  style: controller
+                                      .fontController.currentFontStyle
+                                      .copyWith(
+                                    color: Color(0xFF333333),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                  )),
+                              Text("All",
+                                  textAlign: TextAlign.start,
+                                  style: controller
+                                      .fontController.currentFontStyle
+                                      .copyWith(
+                                    color: Color(0xFF0AAE84),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ),
+                      12.height,
+                      // Wrap CardCommunity in a SizedBox or Flexible
+                      SizedBox(
+                        height: 450, // Đặt chiều cao cụ thể cho container
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: List.generate(
+                             5,
+                              (index) => SizedBox(
+                                width: 320, // Đặt chiều rộng cố định cho mỗi card
+                                child: CardCommunity(
+                                  // community: controller.listCommunity[index],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  12.height,
                   // _sellListWidget(itemWidth, itemHeight),
                   // SizedBox(
                   //   height: 20,
@@ -170,30 +233,30 @@ class HomePage extends BaseGetWidget<HomePageController> {
                   //   height: 20,
                   // ),
                   // _projectListWidget(itemWidth, projectItemHeight),
-            //       SearchDropdown<String>(
-            //   hintText: 'Search for a name',
-            //   controller: _controller,
-            //   focusNode: _focusNode,
-            //   itemBuilder: (context, suggestion) {
-            //     return ListTile(
-            //       title: Text(suggestion),
-            //     );
-            //   },
-            //   suggestions: (pattern) async {
-            //     // Lọc danh sách tên dựa trên văn bản nhập vào
-            //     return _names
-            //         .where((name) => name.toLowerCase().contains(pattern.toLowerCase()))
-            //         .toList();
-            //   },
-            //   onTapSuggestion: (suggestion) {
-            //     // Làm gì đó khi người dùng chọn một tên
-            //     print('Selected: $suggestion');
-            //   },
-            //   onClearCreated: () {
-            //     // Làm gì đó khi người dùng xóa văn bản
-            //     print('Search cleared');
-            //   },
-            // ),
+                  //       SearchDropdown<String>(
+                  //   hintText: 'Search for a name',
+                  //   controller: _controller,
+                  //   focusNode: _focusNode,
+                  //   itemBuilder: (context, suggestion) {
+                  //     return ListTile(
+                  //       title: Text(suggestion),
+                  //     );
+                  //   },
+                  //   suggestions: (pattern) async {
+                  //     // Lọc danh sách tên dựa trên văn bản nhập vào
+                  //     return _names
+                  //         .where((name) => name.toLowerCase().contains(pattern.toLowerCase()))
+                  //         .toList();
+                  //   },
+                  //   onTapSuggestion: (suggestion) {
+                  //     // Làm gì đó khi người dùng chọn một tên
+                  //     print('Selected: $suggestion');
+                  //   },
+                  //   onClearCreated: () {
+                  //     // Làm gì đó khi người dùng xóa văn bản
+                  //     print('Search cleared');
+                  //   },
+                  // ),
                   SizedBox(
                     height: 20,
                   ),
@@ -203,8 +266,8 @@ class HomePage extends BaseGetWidget<HomePageController> {
           ),
         );
       });
-      
-     Widget _utilWidget(BuildContext context) {
+
+  Widget _utilWidget(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 16, right: 16),
       child: Column(
@@ -213,8 +276,7 @@ class HomePage extends BaseGetWidget<HomePageController> {
           Text(
             "Tiện ích",
             textAlign: TextAlign.start,
-            style: AppStyles.textW700(context, size: 18)
-            ,
+            style: AppStyles.textW700(context, size: 18),
           ),
           SizedBox(height: 12),
           SingleChildScrollView(
@@ -245,12 +307,12 @@ class HomePage extends BaseGetWidget<HomePageController> {
                   },
                 ),
                 UtilItemWidget(
-                      image: IconPath.ic_report,
-                      name: "Báo cáo",
-                      onPress: () {
-                        // GoRouter.of(context).go(NameRouter.Baocaoscreen.path);
-                      },
-                    ),
+                  image: IconPath.ic_report,
+                  name: "Báo cáo",
+                  onPress: () {
+                    // GoRouter.of(context).go(NameRouter.Baocaoscreen.path);
+                  },
+                ),
                 UtilItemWidget(
                   image: IconPath.ic_ware_house,
                   name: "Kho tin",
@@ -266,7 +328,7 @@ class HomePage extends BaseGetWidget<HomePageController> {
                   },
                 ),
                 UtilItemWidget(
-                  image:IconPath.ic_project,
+                  image: IconPath.ic_project,
                   name: "Dự án",
                   onPress: () {
                     // GoRouter.of(context)
@@ -274,7 +336,7 @@ class HomePage extends BaseGetWidget<HomePageController> {
                   },
                 ),
                 UtilItemWidget(
-                  image:IconPath.ic_required_ware_house,
+                  image: IconPath.ic_required_ware_house,
                   name: "Yêu cầu",
                   onPress: () {
                     // GoRouter.of(context)
@@ -292,19 +354,19 @@ class HomePage extends BaseGetWidget<HomePageController> {
                 //   builder: (context) {
                 //     return checkPermission(
                 //             'request_customer_phone', appStore.listpermissions)
-                //         ? 
+                //         ?
                 //         : SizedBox
                 //             .shrink(); // Trả về widget trống nếu không có quyền
                 //   },
                 // )
                 UtilItemWidget(
-                            image:IconPath.ic_phanyeucau,
-                            name: "Phân yêu cầu",
-                            onPress: () {
-                              // GoRouter.of(context)
-                              //     .pushNamed(NameRouter.Phanyeucauscreen.name);
-                            },
-                          )
+                  image: IconPath.ic_phanyeucau,
+                  name: "Phân yêu cầu",
+                  onPress: () {
+                    // GoRouter.of(context)
+                    //     .pushNamed(NameRouter.Phanyeucauscreen.name);
+                  },
+                )
               ],
             ),
           )
@@ -312,4 +374,7 @@ class HomePage extends BaseGetWidget<HomePageController> {
       ),
     );
   }
+
+  //cộng đồng------------------------------------------------------
+  
 }

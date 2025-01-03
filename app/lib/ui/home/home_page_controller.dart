@@ -1,11 +1,14 @@
 // ignore_for_file: unnecessary_overrides
 
 import 'package:app/base/base_getx_controller.dart';
+import 'package:app/base/font_controller.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomePageController extends BaseGetXController {
+  final FontController fontController = FontController();
+
   late PersistentTabController tabController;
   RxInt selectedIndex = (-1).obs; // Khởi đầu với không tab nào được chọn.
 //

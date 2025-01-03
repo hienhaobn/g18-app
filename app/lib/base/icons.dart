@@ -29,4 +29,11 @@ class IconPath {
   static const String ic_contact = '$icon_path/ic_contact.svg';
   static const String ic_edit = '$icon_path/ic_edit.svg';
   static const String ic_delete = '$icon_path/ic_delete.svg';
+  static const String ic_favorite = '$icon_path/ic_favorite_unSelected2.svg';
+  static const String ic_area_m2 = '$icon_path/ic_area_m2.svg';
+  static const String ic_bed = '$icon_path/ic_bed.svg';
+  static const String ic_toilet = '$icon_path/ic_toilet.svg';
+  static const String ic_area_m = '$icon_path/ic_area_m.svg';
+  static const String ic_direction = '$icon_path/ic_direction.svg';
+
   }
